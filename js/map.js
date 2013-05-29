@@ -2,24 +2,26 @@
 
 'use strict';
 
-var map = angular.module('tracks.map', []);
+var module = angular.module('tracks.map', [
+  'tracks.goog'
+]);
 
-map.directive('tracksMap', [function() {
+module.directive('tracksSvg', function() {
+  function linkMap(scope, element, attrs, controller) {
+    var elem = element[0];
+    var svg = d3.select(elem).append('svg')
+      .attr('width', elem.clientWidth)
+      .attr('height', elem.clientHeight);
+  }
   return {
-    templateUrl: '/partials/map.html',
-    controller: 'MapController',
-    link: function(scope, element, attrs, controller) {
-      controller.init(new google.maps.Map(element[0]));
-    }
+    controller: 'TracksSvgController',
+    template: '<div class="d3-map"></div>',
+    link: linkMap
   };
-}]);
+});
 
-map.controller('MapController', ['$scope', function($scope) {
-  var map;
+module.controller('TracksSvgController', ['directions', function(directions) {
 
-  this.init = function(_map) {
-    map = _map;
-  };
 }]);
 
 }());
