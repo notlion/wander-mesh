@@ -11,9 +11,11 @@ module.directive('tracksMap', ['directions', function(directions) {
     link: function($scope, element, attrs, controller) {
       var gm = google.maps;
 
+      gm.visualRefresh = true;
+
       var map = new gm.Map(element[0], {
         center: new gm.LatLng(39.828175, -98.5795),
-        zoom: 4,
+        zoom: 5,
         mapTypeId: gm.MapTypeId.ROADMAP,
         disableDefaultUI: true,
         keyboardShortcuts: true
@@ -25,53 +27,90 @@ module.directive('tracksMap', ['directions', function(directions) {
         if (!$scope.$$phase) $scope.$apply();
       }
 
-      function addMarker(latLng) {
-        var marker = new gm.Marker({ map: map, position: latLng });
-        $scope.markers.push(marker);
+      function onMarkerDragEnd() {
+        removeMarker(this);
+        safeApply();
+        addMarker(this.getPosition());
         safeApply();
       }
+
+      function addMarker(latLng) {
+        var marker = new gm.Marker({
+          map: map,
+          position: latLng,
+          draggable: true
+        });
+        gm.event.addListener(marker, 'dragend', onMarkerDragEnd.bind(marker));
+        $scope.markers.push(marker);
+      }
       function removeMarker(marker) {
+        gm.event.clearInstanceListeners(marker);
+        marker.setMap(null);
         var i = $scope.markers.indexOf(marker);
         if (i >= 0) {
           $scope.markers.splice(i, 1);
-          safeApply();
         }
       }
 
-      var edgeOverlays = [];
+      var edges = [];
 
-      function equalsEdge(e1, e2) {
-        return e1.source === e2.source && e1.target === e2.target;
+      function edgeIndexOf(edges, edge) {
+        return indexOf(edges, function(otherEdge) {
+          return equalsEdge(edge, otherEdge);
+        });
       }
 
-      function replaceEdges(edges) {
-        edgeOverlays.forEach(function(overlay){ overlay.setMap(null); });
-        edgeOverlays = [];
-        edges.forEach(function(edge) {
-          edgeOverlays.push(new gm.Polyline({
+      function addEdge(edge) {
+        edges.push(edge);
+        edge.line = new gm.Polyline({
+          map: map,
+          geodesic: true,
+          clickable: false,
+          path: [ edge.source.getPosition(), edge.target.getPosition() ],
+          strokeOpacity: 0.25
+        });
+        directions.requestEdgeRoute(edge, function(result) {
+          edge.path = new gm.Polyline({
             map: map,
-            geodesic: true,
             clickable: false,
-            path: [ edge.source.getPosition(), edge.target.getPosition() ],
-            strokeOpacity: 0.25
-          }));
-          directions.requestEdgeRoute(edge, function(result) {
-            edgeOverlays.push(new gm.Polyline({
-              map: map,
-              clickable: false,
-              path: result.routes[0].overview_path,
-              strokeColor: '#0000ff',
-              strokeOpacity: 0.5
-            }));
+            path: result.routes[0].overview_path,
+            strokeColor: '#c300ff',
+            strokeWeight: 5,
+            strokeOpacity: 1
           });
         });
       }
 
+      function removeEdge(edge) {
+        directions.cancelRequestEdgeRoute(edge);
+        if (edge.line) edge.line.setMap(null);
+        if (edge.path) edge.path.setMap(null);
+        var i = edgeIndexOf(edges, edge);
+        if (i >= 0) edges.splice(i, 1);
+      }
+
+      function replaceEdges(nextEdges) {
+        var enterEdges = _.filter(nextEdges, function(edge) {
+          return edgeIndexOf(edges, edge) === -1;
+        });
+        var exitEdges = _.filter(edges, function(edge) {
+          return edgeIndexOf(nextEdges, edge) === -1;
+        });
+        enterEdges.forEach(addEdge);
+        exitEdges.forEach(removeEdge);
+      }
+
       gm.event.addListener(map, 'click', function(event) {
         addMarker(event.latLng);
+        safeApply();
       });
 
-      $scope.$watch('edges.length', function() {
+      $scope.$watch(function genId() {
+        return $scope.edges.reduce(function(p, c) {
+          return p + c.source.getPosition().toUrlValue() +
+                     c.target.getPosition().toUrlValue();
+        }, '');
+      }, function() {
         replaceEdges($scope.edges);
       });
     }
@@ -87,9 +126,12 @@ module.controller('TracksMapController', ['$scope', function($scope) {
       .links(markers);
   }
 
-  $scope.$watch('markers.length', function() {
+  $scope.$watch(function genId() {
+    return $scope.markers.reduce(function(p, c) {
+      return p + c.getPosition().toUrlValue();
+    }, '');
+  }, function() {
     $scope.edges = getMarkerEdges($scope.markers);
-    console.log($scope.edges);
   });
 }]);
 
@@ -103,14 +145,7 @@ module.factory('directions', ['$q', function($q) {
   var queuedRequests = [];
   var pendingRequests = [];
 
-  function requestIndexOf(array, edge) {
-    for (var i = 0, n = array.length; i < n; ++i) {
-      if (edge === array[i].edge) return i;
-    }
-    return -1;
-  }
-
-  var tickInterval = 500;
+  var tickInterval = 100;
   var tickTimeout = null;
 
   function tick() {
@@ -123,7 +158,13 @@ module.factory('directions', ['$q', function($q) {
         travelMode: gm.TravelMode.DRIVING
       }, function(result, status) {
         if (directions.cancelRequestEdgeRoute(request.edge)) {
-          if (status === gm.DirectionsStatus.OK) request.callback(result);
+          if (status === gm.DirectionsStatus.OK) {
+            request.callback(result);
+          }
+          else if(status === gm.DirectionsStatus.OVER_QUERY_LIMIT) {
+            console.log('Retrying...');
+            queuedRequests.push(request); // Retry
+          }
           else console.error(status);
         }
       });
@@ -134,6 +175,12 @@ module.factory('directions', ['$q', function($q) {
 
   function start() {
     if (tickTimeout === null) tickTimeout = setTimeout(tick, 0);
+  }
+
+  function requestIndexOf(requests, edge) {
+    return indexOf(requests, function(request) {
+      return equalsEdge(edge, request.edge);
+    });
   }
 
   directions.requestEdgeRoute = function(edge, callback) {
@@ -160,5 +207,17 @@ module.factory('directions', ['$q', function($q) {
 
   return directions;
 }]);
+
+function equalsEdge(e1, e2) {
+  return e1.source.getPosition().equals(e2.source.getPosition()) &&
+         e1.target.getPosition().equals(e2.target.getPosition());
+}
+
+function indexOf(array, foundFn) {
+  for (var i = 0, n = array.length; i < n; ++i) {
+    if (foundFn(array[i])) return i;
+  }
+  return -1;
+}
 
 }());
