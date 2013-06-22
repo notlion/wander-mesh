@@ -6,7 +6,7 @@ var module = angular.module('tracks.goog', [
   'tracks.project'
 ]);
 
-module.directive('tracksMap', ['directions', function(directions) {
+module.directive('tracksMap', ['directionsMgr', function(directionsMgr) {
   return {
     template: '<div class="goog-map"></div>',
     controller: 'TracksMapController',
@@ -71,20 +71,25 @@ module.directive('tracksMap', ['directions', function(directions) {
           path: [ edge.source, edge.target ],
           strokeOpacity: 0.25
         });
-        directions.requestEdgeRoute(edge, function(result) {
-          edge.path = new gm.Polyline({
-            map: map,
-            clickable: false,
-            path: result.routes[0].overview_path,
-            strokeColor: '#c300ff',
-            strokeWeight: 5,
-            strokeOpacity: 1
-          });
-        });
+        directionsMgr.requestEdgeRoute(edge).then(
+          function(result) {
+            edge.path = new gm.Polyline({
+              map: map,
+              clickable: false,
+              path: result.routes[0].overview_path,
+              strokeColor: '#c300ff',
+              strokeWeight: 5,
+              strokeOpacity: 1
+            });
+          },
+          function(error) {
+            console.error(error);
+          }
+        );
       }
 
       function removeEdge(edge) {
-        directions.cancelRequestEdgeRoute(edge);
+        directionsMgr.cancelRequestEdgeRoute(edge);
         if (edge.line) edge.line.setMap(null);
         if (edge.path) edge.path.setMap(null);
         var i = edgeIndexOf(edges, edge);
@@ -109,8 +114,7 @@ module.directive('tracksMap', ['directions', function(directions) {
 
       $scope.$watch(function genId() {
         return $scope.edges.reduce(function(p, c) {
-          return p + c.source.toUrlValue() +
-                     c.target.toUrlValue();
+          return p + c.source.toUrlValue() + c.target.toUrlValue();
         }, '');
       }, function() {
         replaceEdges($scope.edges);
@@ -131,12 +135,12 @@ module.controller('TracksMapController', [
       });
     }
 
-    function getNodeEdges(nodes) {
+    function getDelaunayEdges(nodes) {
       if (nodes.length < 1) return [];
       var projected = project.latLngArray(nodes);
       return d3.geom.voronoi()
-        .x(function(d, i) { return projected[i].x; })
-        .y(function(d, i) { return projected[i].y; })
+        .x(function(d, i) { return projected[i][0]; })
+        .y(function(d, i) { return projected[i][1]; })
         .links(nodes);
     }
 
@@ -146,83 +150,98 @@ module.controller('TracksMapController', [
       }, '');
     }, function() {
       $rootScope.nodes = getMarkerNodes($scope.markers);
-      $rootScope.edges = getNodeEdges($rootScope.nodes);
+      $rootScope.edges = getDelaunayEdges($rootScope.nodes);
     });
   }
 ]);
 
-module.factory('directions', ['$q', function($q) {
-  var gm = google.maps;
-  var ds = new gm.DirectionsService();
-  var deferred = $q.defer();
+module.factory('directionsMgr', [
+  '$q',
+  '$rootScope',
+  function($q, $rootScope) {
+    var gm = google.maps;
+    var ds = new gm.DirectionsService();
 
-  var directions = {};
+    var directionsMgr = {};
 
-  var queuedRequests = [];
-  var pendingRequests = [];
+    var queuedRequests = [];
+    var pendingRequests = [];
 
-  var tickInterval = 100;
-  var tickTimeout = null;
+    var tickInterval = 100;
+    var tickTimeout = null;
 
-  function tick() {
-    if (queuedRequests.length > 0) {
-      var request = queuedRequests.shift();
-      pendingRequests.push(request);
-      ds.route({
-        origin: request.edge.source,
-        destination: request.edge.target,
-        travelMode: gm.TravelMode.DRIVING
-      }, function(result, status) {
-        if (directions.cancelRequestEdgeRoute(request.edge)) {
-          if (status === gm.DirectionsStatus.OK) {
-            request.callback(result);
+    function tick() {
+      if (queuedRequests.length > 0) {
+        var request = queuedRequests.shift();
+        pendingRequests.push(request);
+        ds.route({
+          origin: request.edge.source,
+          destination: request.edge.target,
+          travelMode: gm.TravelMode.DRIVING
+        }, function(result, status) {
+          if (directionsMgr.cancelRequestEdgeRoute(request.edge, true)) {
+            if (status === gm.DirectionsStatus.OK) {
+              request.resolve(result);
+              // We need to digest since we are outside angular's scope.
+              $rootScope.$digest();
+            }
+            else if(status === gm.DirectionsStatus.OVER_QUERY_LIMIT) {
+              console.log('Retrying...');
+              queuedRequests.push(request); // Retry
+            }
+            else {
+              request.reject(status);
+            }
           }
-          else if(status === gm.DirectionsStatus.OVER_QUERY_LIMIT) {
-            console.log('Retrying...');
-            queuedRequests.push(request); // Retry
-          }
-          else console.error(status);
-        }
+        });
+        tickTimeout = queuedRequests.length > 0 ? setTimeout(tick, tickInterval)
+                                                : null;
+      }
+    }
+
+    function start() {
+      if (tickTimeout === null) tickTimeout = setTimeout(tick, 0);
+    }
+
+    function requestIndexOf(requests, edge) {
+      return indexOf(requests, function(request) {
+        return equalsEdge(edge, request.edge);
       });
-      tickTimeout = queuedRequests.length > 0 ? setTimeout(tick, tickInterval)
-                                              : null;
     }
+
+    directionsMgr.requestEdgeRoute = function(edge, callback) {
+      var deferred = $q.defer();
+      var i = requestIndexOf(queuedRequests, edge);
+      if (i === -1) {
+        deferred.edge = edge;
+        queuedRequests.push(deferred);
+        start();
+      }
+      else {
+        deferred.reject('Edge route already queued');
+      }
+      return deferred.promise;
+    };
+
+    directionsMgr.cancelRequestEdgeRoute = function(edge, silent) {
+      var i = requestIndexOf(queuedRequests, edge);
+      if (i >= 0) {
+        if (!silent) queuedRequests[i].reject('Cancelled');
+        queuedRequests.splice(i, 1);
+        return true;
+      }
+      i = requestIndexOf(pendingRequests, edge);
+      if (i >= 0) {
+        if (!silent) pendingRequests[i].reject('Cancelled');
+        pendingRequests.splice(i, 1);
+        return true;
+      }
+      return false;
+    };
+
+    return directionsMgr;
   }
-
-  function start() {
-    if (tickTimeout === null) tickTimeout = setTimeout(tick, 0);
-  }
-
-  function requestIndexOf(requests, edge) {
-    return indexOf(requests, function(request) {
-      return equalsEdge(edge, request.edge);
-    });
-  }
-
-  directions.requestEdgeRoute = function(edge, callback) {
-    var i = requestIndexOf(queuedRequests, edge);
-    if (i === -1) {
-      queuedRequests.push({ edge: edge, callback: callback });
-      start();
-    }
-  };
-
-  directions.cancelRequestEdgeRoute = function(edge) {
-    var i = requestIndexOf(queuedRequests, edge);
-    if (i >= 0) {
-      queuedRequests.splice(i, 1);
-      return true;
-    }
-    i = requestIndexOf(pendingRequests, edge);
-    if (i >= 0) {
-      pendingRequests.splice(i, 1);
-      return true;
-    }
-    return false;
-  };
-
-  return directions;
-}]);
+]);
 
 function equalsEdge(e1, e2) {
   return e1.source.equals(e2.source) && e1.target.equals(e2.target);
