@@ -3,7 +3,7 @@ html, body {
   padding: 0;
 }
 
-.content, .map {
+.map {
   position: absolute;
   width: 100%;
   height: 100%;

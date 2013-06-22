@@ -2,7 +2,9 @@
 
 'use strict';
 
-var module = angular.module('tracks.goog', []);
+var module = angular.module('tracks.goog', [
+  'tracks.project'
+]);
 
 module.directive('tracksMap', ['directions', function(directions) {
   return {
@@ -66,7 +68,7 @@ module.directive('tracksMap', ['directions', function(directions) {
           map: map,
           geodesic: true,
           clickable: false,
-          path: [ edge.source.getPosition(), edge.target.getPosition() ],
+          path: [ edge.source, edge.target ],
           strokeOpacity: 0.25
         });
         directions.requestEdgeRoute(edge, function(result) {
@@ -107,8 +109,8 @@ module.directive('tracksMap', ['directions', function(directions) {
 
       $scope.$watch(function genId() {
         return $scope.edges.reduce(function(p, c) {
-          return p + c.source.getPosition().toUrlValue() +
-                     c.target.getPosition().toUrlValue();
+          return p + c.source.toUrlValue() +
+                     c.target.toUrlValue();
         }, '');
       }, function() {
         replaceEdges($scope.edges);
@@ -117,23 +119,37 @@ module.directive('tracksMap', ['directions', function(directions) {
   };
 }]);
 
-module.controller('TracksMapController', ['$scope', function($scope) {
-  function getMarkerEdges(markers) {
-    if (markers.length < 1) return [];
-    return d3.geom.voronoi()
-      .x(function(d){ return d.getPosition().lng(); })
-      .y(function(d){ return d.getPosition().lat(); })
-      .links(markers);
-  }
+module.controller('TracksMapController', [
+  '$rootScope',
+  '$scope',
+  'project',
+  function($rootScope, $scope, project) {
+    function getMarkerNodes(markers) {
+      if (markers.length < 1) return [];
+      return markers.map(function(marker) {
+        return marker.getPosition();
+      });
+    }
 
-  $scope.$watch(function genId() {
-    return $scope.markers.reduce(function(p, c) {
-      return p + c.getPosition().toUrlValue();
-    }, '');
-  }, function() {
-    $scope.edges = getMarkerEdges($scope.markers);
-  });
-}]);
+    function getNodeEdges(nodes) {
+      if (nodes.length < 1) return [];
+      var projected = project.latLngArray(nodes);
+      return d3.geom.voronoi()
+        .x(function(d, i) { return projected[i].x; })
+        .y(function(d, i) { return projected[i].y; })
+        .links(nodes);
+    }
+
+    $scope.$watch(function genId() {
+      return $scope.markers.reduce(function(p, c) {
+        return p + c.getPosition().toUrlValue();
+      }, '');
+    }, function() {
+      $rootScope.nodes = getMarkerNodes($scope.markers);
+      $rootScope.edges = getNodeEdges($rootScope.nodes);
+    });
+  }
+]);
 
 module.factory('directions', ['$q', function($q) {
   var gm = google.maps;
@@ -153,8 +169,8 @@ module.factory('directions', ['$q', function($q) {
       var request = queuedRequests.shift();
       pendingRequests.push(request);
       ds.route({
-        origin: request.edge.source.getPosition(),
-        destination: request.edge.target.getPosition(),
+        origin: request.edge.source,
+        destination: request.edge.target,
         travelMode: gm.TravelMode.DRIVING
       }, function(result, status) {
         if (directions.cancelRequestEdgeRoute(request.edge)) {
@@ -209,8 +225,7 @@ module.factory('directions', ['$q', function($q) {
 }]);
 
 function equalsEdge(e1, e2) {
-  return e1.source.getPosition().equals(e2.source.getPosition()) &&
-         e1.target.getPosition().equals(e2.target.getPosition());
+  return e1.source.equals(e2.source) && e1.target.equals(e2.target);
 }
 
 function indexOf(array, foundFn) {

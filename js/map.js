@@ -2,26 +2,31 @@
 
 'use strict';
 
-var module = angular.module('tracks.map', [
-  'tracks.goog'
-]);
+var module = angular.module('tracks.map', []);
 
-module.directive('tracksSvg', function() {
-  function linkMap(scope, element, attrs, controller) {
-    var elem = element[0];
-    var svg = d3.select(elem).append('svg')
-      .attr('width', elem.clientWidth)
-      .attr('height', elem.clientHeight);
-  }
+module.directive('onGlobalTab', ['$window', '$parse', function($window, $parse) {
   return {
-    controller: 'TracksSvgController',
-    template: '<div class="d3-map"></div>',
-    link: linkMap
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      var callback = $parse(attrs.onGlobalTab);
+      $window.addEventListener('keydown', function(event) {
+        if (event.keyCode === 9) { // tab
+          event.preventDefault();
+          scope.$apply(callback(scope, { $event: event }));
+        }
+      });
+    }
   };
-});
+}]);
 
-module.controller('TracksSvgController', ['directions', function(directions) {
+module.controller('MapController', ['$scope', function($scope) {
+  var modes = [ 'map', 'render' ];
 
+  $scope.mode = modes[0];
+
+  $scope.nextMode = function() {
+    $scope.mode = modes[(modes.indexOf($scope.mode) + 1) % modes.length];
+  };
 }]);
 
 }());

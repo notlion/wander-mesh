@@ -1,2 +1,4 @@
-<div tracks-map class="map"></div>
-<div ng-show="false" tracks-svg class="map"></div>
+<div on-global-tab="nextMode()" ng-switch="mode">
+  <div tracks-map class="map" ng-switch-when="map"></div>
+  <div tracks-render class="map" ng-switch-when="render"></div>
+</div>
