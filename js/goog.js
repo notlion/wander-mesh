@@ -6,7 +6,7 @@ var module = angular.module('tracks.goog', [
   'tracks.project'
 ]);
 
-module.directive('tracksMap', ['directionsMgr', function(directionsMgr) {
+module.directive('tracksMap', ['edgeMgr', function(edgeMgr) {
   return {
     template: '<div class="goog-map"></div>',
     controller: 'TracksMapController',
@@ -45,6 +45,7 @@ module.directive('tracksMap', ['directionsMgr', function(directionsMgr) {
         gm.event.addListener(marker, 'dragend', onMarkerDragEnd.bind(marker));
         $scope.markers.push(marker);
       }
+
       function removeMarker(marker) {
         gm.event.clearInstanceListeners(marker);
         marker.setMap(null);
@@ -54,70 +55,54 @@ module.directive('tracksMap', ['directionsMgr', function(directionsMgr) {
         }
       }
 
-      var edges = [];
-
-      function edgeIndexOf(edges, edge) {
-        return indexOf(edges, function(otherEdge) {
-          return equalsEdge(edge, otherEdge);
-        });
-      }
-
-      function addEdge(edge) {
-        edges.push(edge);
-        edge.line = new gm.Polyline({
-          map: map,
-          geodesic: true,
-          clickable: false,
-          path: [ edge.source, edge.target ],
-          strokeOpacity: 0.25
-        });
-        directionsMgr.requestEdgeRoute(edge).then(
-          function(result) {
-            edge.path = new gm.Polyline({
-              map: map,
-              clickable: false,
-              path: result.routes[0].overview_path,
-              strokeColor: '#c300ff',
-              strokeWeight: 5,
-              strokeOpacity: 1
-            });
-          },
-          function(error) {
-            console.error(error);
-          }
-        );
-      }
-
-      function removeEdge(edge) {
-        directionsMgr.cancelRequestEdgeRoute(edge);
-        if (edge.line) edge.line.setMap(null);
-        if (edge.path) edge.path.setMap(null);
-        var i = edgeIndexOf(edges, edge);
-        if (i >= 0) edges.splice(i, 1);
-      }
-
-      function replaceEdges(nextEdges) {
-        var enterEdges = _.filter(nextEdges, function(edge) {
-          return edgeIndexOf(edges, edge) === -1;
-        });
-        var exitEdges = _.filter(edges, function(edge) {
-          return edgeIndexOf(nextEdges, edge) === -1;
-        });
-        enterEdges.forEach(addEdge);
-        exitEdges.forEach(removeEdge);
-      }
-
       gm.event.addListener(map, 'click', function(event) {
         addMarker(event.latLng);
         safeApply();
       });
 
+      var linesByEdgeId = {};
+      var routesByEdgeId = {};
+
       $scope.$watch(function genId() {
         return $scope.edges.reduce(function(p, c) {
-          return p + c.source.toUrlValue() + c.target.toUrlValue();
+          return p + ',' + c.id;
         }, '');
       }, function() {
-        replaceEdges($scope.edges);
+        var transition = edgeMgr.replaceAll($scope.edges);
+        transition.exiting.forEach(function(edge) {
+          if (linesByEdgeId[edge.id]) {
+            linesByEdgeId[edge.id].setMap(null);
+            delete linesByEdgeId[edge.id];
+          }
+          if (routesByEdgeId[edge.id]) {
+            routesByEdgeId[edge.id].setMap(null);
+            delete routesByEdgeId[edge.id];
+          }
+        });
+        transition.entering.forEach(function(edge) {
+          linesByEdgeId[edge.id] = new gm.Polyline({
+            map: map,
+            geodesic: true,
+            clickable: false,
+            path: [ edge.source, edge.target ],
+            strokeOpacity: 0.25
+          });
+          edge.routePromise.then(
+            function(result) {
+              routesByEdgeId[edge.id] = new gm.Polyline({
+                map: map,
+                clickable: false,
+                path: result.routes[0].overview_path,
+                strokeColor: '#c300ff',
+                strokeWeight: 5,
+                strokeOpacity: 1
+              });
+            },
+            function(error) {
+              console.error(error);
+            }
+          );
+        });
       });
     }
   };
@@ -135,13 +120,20 @@ module.controller('TracksMapController', [
       });
     }
 
+    var nextEdgeId = 0;
+
     function getDelaunayEdges(nodes) {
       if (nodes.length < 1) return [];
       var projected = project.latLngArray(nodes);
-      return d3.geom.voronoi()
+      var edges = d3.geom.voronoi()
         .x(function(d, i) { return projected[i][0]; })
         .y(function(d, i) { return projected[i][1]; })
         .links(nodes);
+      // Give each edge an incrementing ID for lookup in maps.
+      edges.forEach(function(edge) {
+        edge.id = nextEdgeId++;
+      });
+      return edges;
     }
 
     $scope.$watch(function genId() {
@@ -152,6 +144,52 @@ module.controller('TracksMapController', [
       $rootScope.nodes = getMarkerNodes($scope.markers);
       $rootScope.edges = getDelaunayEdges($rootScope.nodes);
     });
+  }
+]);
+
+module.factory('edgeMgr', [
+  '$q',
+  'directionsMgr',
+  function($q, directionsMgr) {
+    var edgeMgr = {};
+    var edges = [];
+
+    function addEdge(edge) {
+      edge.routePromise = directionsMgr.requestEdgeRoute(edge);
+      edges.push(edge);
+    }
+
+    function removeEdge(edge) {
+      directionsMgr.cancelRequestEdgeRoute(edge);
+      var i = edgeIndexOf(edges, edge);
+      if (i >= 0) edges.splice(i, 1);
+    }
+
+    edgeMgr.replaceAll = function(nextEdges) {
+      var transition = {
+        entering: _.filter(nextEdges, function(edge) {
+          return edgeIndexOf(edges, edge) === -1;
+        }),
+        exiting:  _.filter(edges, function(edge) {
+          return edgeIndexOf(nextEdges, edge) === -1;
+        })
+      };
+      transition.entering.forEach(addEdge);
+      transition.exiting.forEach(removeEdge);
+      return transition;
+    };
+
+    edgeMgr.getEdges = function() {
+      return edges;
+    };
+
+    edgeMgr.indexOf = function(edges, edge) {
+      return indexOf(edges, function(otherEdge) {
+        return equalsEdge(edge, otherEdge);
+      });
+    };
+
+    return edgeMgr;
   }
 ]);
 
@@ -252,6 +290,12 @@ function indexOf(array, foundFn) {
     if (foundFn(array[i])) return i;
   }
   return -1;
+}
+
+function edgeIndexOf(edges, edge) {
+  return indexOf(edges, function(otherEdge) {
+    return equalsEdge(edge, otherEdge);
+  });
 }
 
 }());
