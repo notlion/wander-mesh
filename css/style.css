@@ -24,24 +24,16 @@ html, body {
   fill: #fff;
 }
 
-.line {
-  stroke: #aaa;
-  stroke-width: 2px;
-  fill: none;
-}
-
 .route {
   pointer-events: all;
 }
 .route .path {
   stroke: #a87fff;
-  stroke-width: 5px;
   stroke-linejoin: round;
   stroke-linecap: round;
   fill: none;
 }
 .route .node {
   stroke: #a87fff;
-  stroke-width: 2px;
   fill: #fff;
 }

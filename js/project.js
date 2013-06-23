@@ -11,7 +11,7 @@ module.factory('project', [function() {
     .rotate([ 98, 0 ])
     .center([ 0, 38 ])
     .scale(1000)
-    .translate([ 0, 0 ])
+    .translate([ 1000, 1000 ])
     .precision(0.1);
 
   project.latLng = function(latLng) {
