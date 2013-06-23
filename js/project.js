@@ -10,6 +10,8 @@ module.factory('project', [function() {
   var projection = d3.geo.albers()
     .rotate([ 98, 0 ])
     .center([ 0, 38 ])
+    .scale(1000)
+    .translate([ 0, 0 ])
     .precision(0.1);
 
   project.latLng = function(latLng) {
@@ -18,6 +20,10 @@ module.factory('project', [function() {
 
   project.latLngArray = function(arr) {
     return arr.map(project.latLng);
+  };
+
+  project.getProjection = function() {
+    return projection;
   };
 
   return project;

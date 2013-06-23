@@ -6,13 +6,13 @@ var module = angular.module('tracks.goog', [
   'tracks.project'
 ]);
 
-module.directive('tracksMap', ['edgeMgr', function(edgeMgr) {
+module.directive('tracksMap', [function() {
   return {
-    template: '<div class="goog-map"></div>',
     controller: 'TracksMapController',
     link: function($scope, element, attrs, controller) {
-      var gm = google.maps;
+      element.addClass('goog-map');
 
+      var gm = google.maps;
       gm.visualRefresh = true;
 
       var map = new gm.Map(element[0], {
@@ -63,12 +63,8 @@ module.directive('tracksMap', ['edgeMgr', function(edgeMgr) {
       var linesByEdgeId = {};
       var routesByEdgeId = {};
 
-      $scope.$watch(function genId() {
-        return $scope.edges.reduce(function(p, c) {
-          return p + ',' + c.id;
-        }, '');
-      }, function() {
-        var transition = edgeMgr.replaceAll($scope.edges);
+      $scope.$watch('transition', function() {
+        var transition = $scope.transition;
         transition.exiting.forEach(function(edge) {
           if (linesByEdgeId[edge.id]) {
             linesByEdgeId[edge.id].setMap(null);
@@ -88,11 +84,11 @@ module.directive('tracksMap', ['edgeMgr', function(edgeMgr) {
             strokeOpacity: 0.25
           });
           edge.routePromise.then(
-            function(result) {
+            function(route) {
               routesByEdgeId[edge.id] = new gm.Polyline({
                 map: map,
                 clickable: false,
-                path: result.routes[0].overview_path,
+                path: route.overview_path,
                 strokeColor: '#c300ff',
                 strokeWeight: 5,
                 strokeOpacity: 1
@@ -112,22 +108,25 @@ module.controller('TracksMapController', [
   '$rootScope',
   '$scope',
   'project',
-  function($rootScope, $scope, project) {
+  'edgeMgr',
+  function($rootScope, $scope, project, edgeMgr) {
     function getMarkerNodes(markers) {
       if (markers.length < 1) return [];
       return markers.map(function(marker) {
-        return marker.getPosition();
+        var node = marker.getPosition();
+        node.id = nextNodeId++;
+        return node;
       });
     }
 
+    var nextNodeId = 0;
     var nextEdgeId = 0;
 
     function getDelaunayEdges(nodes) {
       if (nodes.length < 1) return [];
-      var projected = project.latLngArray(nodes);
       var edges = d3.geom.voronoi()
-        .x(function(d, i) { return projected[i][0]; })
-        .y(function(d, i) { return projected[i][1]; })
+        .x(function(d, i) { return d.projected[0]; })
+        .y(function(d, i) { return d.projected[1]; })
         .links(nodes);
       // Give each edge an incrementing ID for lookup in maps.
       edges.forEach(function(edge) {
@@ -136,13 +135,21 @@ module.controller('TracksMapController', [
       return edges;
     }
 
+    function appendProjectedToNodes(nodes) {
+      nodes.forEach(function(node) {
+        node.projected = project.latLng(node);
+      });
+    }
+
     $scope.$watch(function genId() {
       return $scope.markers.reduce(function(p, c) {
         return p + c.getPosition().toUrlValue();
       }, '');
     }, function() {
       $rootScope.nodes = getMarkerNodes($scope.markers);
+      appendProjectedToNodes($rootScope.nodes);
       $rootScope.edges = getDelaunayEdges($rootScope.nodes);
+      $rootScope.transition = edgeMgr.replaceAll($rootScope.edges);
     });
   }
 ]);
@@ -219,7 +226,7 @@ module.factory('directionsMgr', [
         }, function(result, status) {
           if (directionsMgr.cancelRequestEdgeRoute(request.edge, true)) {
             if (status === gm.DirectionsStatus.OK) {
-              request.resolve(result);
+              request.resolve(result.routes[0]);
               // We need to digest since we are outside angular's scope.
               $rootScope.$digest();
             }

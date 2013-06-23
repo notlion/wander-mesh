@@ -1,4 +1,6 @@
 <div on-global-tab="nextMode()">
-  <div tracks-map class="map" ng-show="isMode('map')"></div>
-  <div tracks-render class="map" ng-show="isMode('render')"></div>
+  <div tracks-map class="map" ng-class="{ active: isMode('map') }">
+  </div>
+  <div tracks-render class="map" ng-class="{ active: isMode('render') }">
+  </div>
 </div>
