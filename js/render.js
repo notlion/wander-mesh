@@ -28,31 +28,6 @@ module.directive('tracksRender', [
         resize();
         $window.addEventListener('resize', resize);
 
-        // var nodes = g.selectAll('.node');
-        // $scope.$watch('nodes', function() {
-        //   nodes = nodes.data($scope.nodes, function(d){ return d.id; });
-        //   nodes.enter().append('circle')
-        //     .attr('class', 'node')
-        //     .attr('r', 10)
-        //     .attr('cx', function(d) { return d.projected[0]; })
-        //     .attr('cy', function(d) { return d.projected[1]; });
-        //   nodes.exit().remove();
-        // });
-
-        // var lines = g.selectAll('.line');
-        // $scope.$watch('edges', function() {
-        //   lines = lines.data($scope.edges, function(d){ return d.id; });
-        //   lines.enter().append('line')
-        //     .attr('class', 'line')
-        //     .attr('x1', function(d) { return d.source.projected[0]; })
-        //     .attr('y1', function(d) { return d.source.projected[1]; })
-        //     .attr('x2', function(d) { return d.target.projected[0]; })
-        //     .attr('y2', function(d) { return d.target.projected[1]; });
-        //   lines.exit().remove();
-        // });
-
-        var routePath = d3.geo.path().projection(project.getProjection());
-
         function routeToFeature(route) {
           return {
             type: 'LineString',
@@ -62,15 +37,34 @@ module.directive('tracksRender', [
           };
         }
 
+        var routePath = d3.geo.path().projection(project.getProjection());
+
         $scope.$watch('transition', function() {
           $scope.transition.entering.forEach(function(edge) {
             edge.routePromise.then(function(route) {
               var id = 'r' + edge.id;
               var feature = routeToFeature(route);
-              var routeSel = g.append('path').datum(feature)
+              var group = g.append('g')
                 .attr('id', id)
-                .attr('class', 'route')
+                .attr('class', 'route');
+              group.append('path')
+                .datum(feature)
+                .attr('class', 'path')
                 .attr('d', routePath);
+              group.selectAll('.node').data(project.latLngArray([
+                  route.overview_path[0],
+                  route.overview_path[route.overview_path.length - 1]
+                ]))
+                .enter().append('path')
+                  .attr('class', 'node')
+                  .attr('transform', function(d) {
+                    return 'translate(' + d[0] + ',' + d[1] + ')';
+                  })
+                  .attr('d', d3.svg.arc()
+                    .startAngle(0)
+                    .endAngle(2 * Math.PI)
+                    .innerRadius(3)
+                    .outerRadius(10));
             });
           });
           $scope.transition.exiting.forEach(function(edge) {
