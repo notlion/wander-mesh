@@ -18,22 +18,14 @@ html, body {
   background: rgba(255, 255, 255, 0.85);
 }
 
-.node {
-  stroke: #000;
-  stroke-width: 2px;
-  fill: #fff;
-}
-
 .route {
   pointer-events: all;
 }
 .route .path {
-  stroke: #a87fff;
   stroke-linejoin: round;
   stroke-linecap: round;
   fill: none;
 }
 .route .node {
-  stroke: #a87fff;
   fill: #fff;
 }

@@ -135,7 +135,7 @@ module.directive('tracksRender', [
         function hiliteRoute(id) {
           g.selectAll('.route').transition()
             .style('opacity', function() {
-              return this.id == id ? 1 : 0.25;
+              return this.id == id ? 1 : 0;
             });
         }
         function resetRouteHilite() {
