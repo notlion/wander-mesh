@@ -39,18 +39,36 @@ module.directive('tracksRender', [
 
         var routePath = d3.geo.path().projection(project.getProjection());
 
+        // function updateRouteTransforms() {
+        // }
+
+        function hiliteRoute(id) {
+          g.selectAll('.route').transition()
+            .style('opacity', function() {
+              return this.id.slice(1) == id ? 1 : 0.25;
+            });
+        }
+        function resetRouteHilite() {
+          g.selectAll('.route').transition().style('opacity', 1);
+        }
+
         $scope.$watch('transition', function() {
           $scope.transition.entering.forEach(function(edge) {
             edge.routePromise.then(function(route) {
               var id = 'r' + edge.id;
               var feature = routeToFeature(route);
+
               var group = g.append('g')
                 .attr('id', id)
-                .attr('class', 'route');
+                .attr('class', 'route')
+                .on('mouseover', function(){ hiliteRoute(edge.id); })
+                .on('mouseout', function(){ resetRouteHilite(); });
+
               group.append('path')
                 .datum(feature)
                 .attr('class', 'path')
                 .attr('d', routePath);
+
               group.selectAll('.node').data(project.latLngArray([
                   route.overview_path[0],
                   route.overview_path[route.overview_path.length - 1]
@@ -65,22 +83,25 @@ module.directive('tracksRender', [
                     .endAngle(2 * Math.PI)
                     .innerRadius(3)
                     .outerRadius(10));
+
+              // updateRouteTransforms();
             });
           });
           $scope.transition.exiting.forEach(function(edge) {
             g.selectAll('#r' + edge.id).remove();
           });
         });
+
+        // $scope.$watch('nested', updateRouteTransforms);
       }
     };
   }
 ]);
 
 module.controller('TracksRenderController', [
-  '$rootScope',
   '$scope',
-  'project',
-  function($rootScope, project) {
+  function($scope) {
+    $scope.nested = false;
   }
 ]);
 
