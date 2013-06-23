@@ -27,6 +27,10 @@ module.controller('MapController', ['$scope', function($scope) {
   $scope.nextMode = function() {
     $scope.mode = modes[(modes.indexOf($scope.mode) + 1) % modes.length];
   };
+
+  $scope.isMode = function(name) {
+    return $scope.mode === name;
+  };
 }]);
 
 }());

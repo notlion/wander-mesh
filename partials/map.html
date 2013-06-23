@@ -1,4 +1,4 @@
-<div on-global-tab="nextMode()" ng-switch="mode">
-  <div tracks-map class="map" ng-switch-when="map"></div>
-  <div tracks-render class="map" ng-switch-when="render"></div>
+<div on-global-tab="nextMode()">
+  <div tracks-map class="map" ng-show="isMode('map')"></div>
+  <div tracks-render class="map" ng-show="isMode('render')"></div>
 </div>
