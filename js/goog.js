@@ -3,10 +3,11 @@
 'use strict';
 
 var module = angular.module('tracks.goog', [
-  'tracks.project'
+  'tracks.project',
+  'tracks.data'
 ]);
 
-module.directive('tracksMap', [function() {
+module.directive('tracksMap', ['places', 'geocode', '$q', function(places, geocode, $q) {
   return {
     controller: 'TracksMapController',
     link: function($scope, element, attrs, controller) {
@@ -44,6 +45,7 @@ module.directive('tracksMap', [function() {
         });
         gm.event.addListener(marker, 'dragend', onMarkerDragEnd.bind(marker));
         $scope.markers.push(marker);
+        return marker;
       }
 
       function removeMarker(marker) {
@@ -100,6 +102,24 @@ module.directive('tracksMap', [function() {
           );
         });
       });
+
+      // HACK Just cram in some data..
+      // places.forEach(function(place) {
+      //   addMarker(new gm.LatLng(place.location[1], place.location[0]))
+      //     .setTitle(JSON.stringify(place));
+      // });
+      // var processedPlaces = [];
+      // $q.all(_.first(places, 300).map(function(place) {
+      //   return geocode.request(place.name).then(function(result) {
+      //     place.location = [
+      //       result[0].geometry.location.lng(),
+      //       result[0].geometry.location.lat()
+      //     ];
+      //     processedPlaces.push(place);
+      //   });
+      // })).then(function() {
+      //   console.log(JSON.stringify(processedPlaces));
+      // });
     }
   };
 }]);
@@ -227,11 +247,14 @@ module.factory('directionsMgr', [
           if (directionsMgr.cancelRequestEdgeRoute(request.edge, true)) {
             if (status === gm.DirectionsStatus.OK) {
               request.resolve(result.routes[0]);
+              // Get confident and decrease the timeout by a little.
+              tickInterval = Math.max(0, Math.floor(tickInterval * 0.95));
               // We need to digest since we are outside angular's scope.
               $rootScope.$digest();
             }
             else if(status === gm.DirectionsStatus.OVER_QUERY_LIMIT) {
-              console.log('Retrying...');
+              // Eek! Google rate limited us. Better wait a little longer.
+              tickInterval *= 2;
               queuedRequests.push(request); // Retry
             }
             else {
@@ -285,6 +308,71 @@ module.factory('directionsMgr', [
     };
 
     return directionsMgr;
+  }
+]);
+
+module.factory('geocode', [
+  '$q',
+  '$rootScope',
+  function($q, $rootScope) {
+    var gm = google.maps;
+    var geocoder = new gm.Geocoder();
+
+    var geocode = {};
+
+    var queuedRequests = [];
+    var pendingRequests = [];
+
+    var tickInterval = 100;
+    var tickTimeout = null;
+
+    function tick() {
+      if (queuedRequests.length > 0) {
+        var request = queuedRequests.shift();
+        pendingRequests.push(request);
+        geocoder.geocode({
+          address: request.address
+        }, function(result, status) {
+          var i = pendingRequests.indexOf(request);
+          if (i >= 0) {
+            pendingRequests.splice(i, 1);
+            if (status === gm.GeocoderStatus.OK) {
+              request.resolve(result);
+              // Get confident and decrease the timeout by a little.
+              tickInterval = Math.max(0, Math.floor(tickInterval * 0.95));
+              console.log(tickInterval, queuedRequests.length)
+              // We need to digest since we are outside angular's scope.
+              $rootScope.$digest();
+            }
+            else if(status === gm.GeocoderStatus.OVER_QUERY_LIMIT) {
+              // Eek! Google rate limited us. Better wait a little longer.
+              tickInterval *= 2;
+              console.log('eek!', tickInterval)
+              queuedRequests.push(request); // Retry
+            }
+            else {
+              request.reject(status);
+            }
+          }
+        });
+        tickTimeout = queuedRequests.length > 0 ? setTimeout(tick, tickInterval)
+                                                : null;
+      }
+    }
+
+    function start() {
+      if (tickTimeout === null) tickTimeout = setTimeout(tick, 0);
+    }
+
+    geocode.request = function(address) {
+      var deferred = $q.defer();
+      deferred.address = address;
+      queuedRequests.push(deferred);
+      start();
+      return deferred.promise;
+    };
+
+    return geocode;
   }
 ]);
 

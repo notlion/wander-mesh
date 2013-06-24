@@ -37,14 +37,12 @@ module.directive('tracksRender', [
         $window.addEventListener('resize', resize);
 
         var routePath = d3.geo.path().projection(project.getProjection());
-        var routePaths = {
-          type: 'FeatureCollection',
-          features: []
-        };
-        var routePolygons = {
-          type: 'FeatureCollection',
-          features: []
-        };
+        var routePaths = { type: 'FeatureCollection', features: [] };
+        var routeNodePairs = { type: 'FeatureCollection', features: [] };
+        // var routePolygons = {
+        //   type: 'FeatureCollection',
+        //   features: []
+        // };
 
         function genColor(id) {
           var h = Math.floor(Math.abs(Math.sin(id * 237642.23)) * 255);
@@ -91,25 +89,37 @@ module.directive('tracksRender', [
         //   return coordsL.concat(coordsR.reverse()).concat([coordsL[0]]);
         // }
 
-        function addRoute(route, edgeId) {
-          var path = {
+        function makeFeature(edgeId, type, coordinates) {
+          return {
             type: 'Feature',
             geometry: {
-              type: 'LineString',
-              coordinates: route.overview_path.map(function(latLng) {
-                return [ latLng.lng(), latLng.lat() ];
-              })
+              type: type,
+              coordinates: coordinates
             },
-            properties: { edgeId: edgeId }
+            properties: {
+              edgeId: edgeId
+            }
           };
+        }
+
+        function addRoute(route, edgeId) {
+          var pathCoords = route.overview_path.map(function(latLng) {
+            return [ latLng.lng(), latLng.lat() ];
+          });
+          var path = makeFeature(edgeId, 'LineString', pathCoords);
           routePaths.features.push(path);
+          // routeNodePairs.features.push(makeFeature(edgeId, 'MultiPoint', [
+          //   _.first(pathCoords),
+          //   _.last(pathCoords)
+          // ]));
         }
         function removeRoute(edgeId) {
           function checkId(feature) {
             return feature.properties.edgeId === edgeId;
           }
           routePaths.features = _.reject(routePaths.features, checkId);
-          routePolygons.features = _.reject(routePolygons.features, checkId);
+          // routeNodePairs.features = _.reject(routeNodePairs.features, checkId);
+          // routePolygons.features = _.reject(routePolygons.features, checkId);
         }
 
         function updateRoutes() {
@@ -124,6 +134,9 @@ module.directive('tracksRender', [
           else {
             boundsScale = 1 / (materialHeight / boundsHeight);
           }
+
+          var proj = project.getProjection();
+          var routeStrokeWidth = 0.3 * boundsScale;
 
           // // Remove Everything
           // g.selectAll('.route').remove();
@@ -146,40 +159,67 @@ module.directive('tracksRender', [
           var routes = g.selectAll('.route')
             .data(routePaths.features, featureId);
 
-          var entering = routes.enter().append('g')
+          var enteringRoutes = routes.enter().append('g')
             .attr('id', function(d){ return 'r' + d.properties.edgeId; })
             .attr('class', 'route')
             .on('mouseover', function(){ hiliteRoute(this.id); })
             .on('mouseout', function(){ resetRouteHilite(); });
 
-          entering.append('path')
+          enteringRoutes.append('path')
             .attr('class', 'path')
             .attr('d', routePath)
             .style('stroke', function(d) {
               return genColor(d.properties.edgeId);
             });
+            // .attr('clip-path', function(d) {
+            //   return 'url(#c' + d.properties.edgeId + ')';
+            // });
+
+          // enteringRoutes.append('clippath')
+          //   .attr('id', function(d) {
+          //     return 'c' + d.properties.edgeId;
+          //   })
+          //   .append('path')
+          //     .attr('clip-rule', 'evenodd');
 
           routes.exit().remove();
 
-          routes.style('stroke-width', 0.3 * boundsScale);
+          routes.style('stroke-width', routeStrokeWidth);
 
-          var nodes = g.selectAll('.route')
-            .data(routePaths.features, featureId)
-            .selectAll('.node').data(function(d) {
-              var c = d.geometry.coordinates;
+          // g.selectAll('.route').select('clippath path')
+          //   .attr('d', function(d) {
+          //     var c = d.geometry.coordinates;
+          //     var r = nodeOuterRadius * boundsScale;
+          //     return svgBoundsPath(routePath.bounds(d), r);// +
+          //            svgSquarePath(proj(_.first(c)), r) +
+          //            svgSquarePath(proj(_.last(c)), r);
+          //   });
+
+          // clipPaths.append('circle')
+          //   .datum(function(d) {
+          //     return proj(_.first(d.geometry.coordinates));
+          //   })
+          //   .attr('cx', function(d){ return d[0]; })
+          //   .attr('cy', function(d){ return d[1]; })
+          //   .attr('r', nodeOuterRadius * boundsScale)
+          //   .attr('clip-rule', 'evenodd');
+
+          var nodes = g.selectAll('.route').selectAll('.node')
+            .data(function(d) {
               return [
-                { p: d.properties, c: project.getProjection()(_.first(c)) },
-                { p: d.properties, c: project.getProjection()(_.last(c)) }
+                _.first(d.geometry.coordinates),
+                _.last(d.geometry.coordinates)
               ];
             });
 
           nodes.enter().append('path')
             .attr('class', 'node')
             .attr('transform', function(d) {
-              return 'translate(' + d.c[0] + ',' + d.c[1] + ')';
+              var c = proj(d);
+              return 'translate(' + c[0] + ',' + c[1] + ')';
             })
             .style('stroke', function(d) {
-              return genColor(d.p.edgeId);
+              return genColor(this.parentNode.__data__.properties.edgeId);
             });
 
           nodes.exit().remove();
@@ -226,6 +266,22 @@ module.directive('tracksRender', [
     };
   }
 ]);
+
+// function svgBoundsPath(b, o) {
+//   if (!o) o = 0;
+//   return "M" + (b[0][0] - o) + ',' + (b[0][1] - o) +
+//          "H" + (b[1][0] + o) +
+//          "V" + (b[1][1] + o) +
+//          "H" + (b[0][0] - o) + "Z";
+// }
+
+// function svgSquarePath(c, o) {
+//   if (!o) o = 0;
+//   return "M" + (c[0] - o) + ',' + (c[1] - o) +
+//          "H" + (c[0] + o) +
+//          "V" + (c[1] + o) +
+//          "H" + (c[0] - o) + "Z";
+// }
 
 module.controller('TracksRenderController', [
   '$scope',

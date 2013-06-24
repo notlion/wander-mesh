@@ -23,7 +23,7 @@ html, body {
 }
 .route .path {
   stroke-linejoin: round;
-  stroke-linecap: round;
+  stroke-linecap: butt;
   fill: none;
 }
 .route .node {
