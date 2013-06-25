@@ -222,89 +222,32 @@ module.factory('edgeMgr', [
 
 module.factory('directionsMgr', [
   '$q',
-  '$rootScope',
-  function($q, $rootScope) {
+  'GoogleRequester',
+  function($q, GoogleRequester) {
     var gm = google.maps;
     var ds = new gm.DirectionsService();
-
     var directionsMgr = {};
 
-    var queuedRequests = [];
-    var pendingRequests = [];
+    var requester = new GoogleRequester(function(opts, callback) {
+      ds.route({
+        origin: opts.source,
+        destination: opts.target,
+        travelMode: gm.TravelMode.DRIVING
+      }, callback);
+    });
 
-    var tickInterval = 100;
-    var tickTimeout = null;
-
-    function tick() {
-      if (queuedRequests.length > 0) {
-        var request = queuedRequests.shift();
-        pendingRequests.push(request);
-        ds.route({
-          origin: request.edge.source,
-          destination: request.edge.target,
-          travelMode: gm.TravelMode.DRIVING
-        }, function(result, status) {
-          if (directionsMgr.cancelRequestEdgeRoute(request.edge, true)) {
-            if (status === gm.DirectionsStatus.OK) {
-              request.resolve(result.routes[0]);
-              // Get confident and decrease the timeout by a little.
-              tickInterval = Math.max(0, Math.floor(tickInterval * 0.95));
-              // We need to digest since we are outside angular's scope.
-              $rootScope.$digest();
-            }
-            else if(status === gm.DirectionsStatus.OVER_QUERY_LIMIT) {
-              // Eek! Google rate limited us. Better wait a little longer.
-              tickInterval *= 2;
-              queuedRequests.push(request); // Retry
-            }
-            else {
-              request.reject(status);
-            }
-          }
-        });
-        tickTimeout = queuedRequests.length > 0 ? setTimeout(tick, tickInterval)
-                                                : null;
-      }
-    }
-
-    function start() {
-      if (tickTimeout === null) tickTimeout = setTimeout(tick, 0);
-    }
-
-    function requestIndexOf(requests, edge) {
-      return indexOf(requests, function(request) {
-        return equalsEdge(edge, request.edge);
-      });
-    }
-
-    directionsMgr.requestEdgeRoute = function(edge, callback) {
+    directionsMgr.requestEdgeRoute = function(edge) {
       var deferred = $q.defer();
-      var i = requestIndexOf(queuedRequests, edge);
-      if (i === -1) {
-        deferred.edge = edge;
-        queuedRequests.push(deferred);
-        start();
-      }
-      else {
-        deferred.reject('Edge route already queued');
-      }
+      requester.request(edge).then(function(result) {
+        deferred.resolve(result.routes[0]);
+      }, deferred.reject);
       return deferred.promise;
     };
 
     directionsMgr.cancelRequestEdgeRoute = function(edge, silent) {
-      var i = requestIndexOf(queuedRequests, edge);
-      if (i >= 0) {
-        if (!silent) queuedRequests[i].reject('Cancelled');
-        queuedRequests.splice(i, 1);
-        return true;
-      }
-      i = requestIndexOf(pendingRequests, edge);
-      if (i >= 0) {
-        if (!silent) pendingRequests[i].reject('Cancelled');
-        pendingRequests.splice(i, 1);
-        return true;
-      }
-      return false;
+      return requester.cancel(edge, silent, function(value) {
+        return equalsEdge(value.opts, edge);
+      });
     };
 
     return directionsMgr;
@@ -312,77 +255,109 @@ module.factory('directionsMgr', [
 ]);
 
 module.factory('geocode', [
-  '$q',
-  '$rootScope',
-  function($q, $rootScope) {
+  'GoogleRequester',
+  function(GoogleRequester) {
     var gm = google.maps;
     var geocoder = new gm.Geocoder();
-
     var geocode = {};
 
-    var queuedRequests = [];
-    var pendingRequests = [];
-
-    var tickInterval = 100;
-    var tickTimeout = null;
-
-    function tick() {
-      if (queuedRequests.length > 0) {
-        var request = queuedRequests.shift();
-        pendingRequests.push(request);
-        geocoder.geocode({
-          address: request.address
-        }, function(result, status) {
-          var i = pendingRequests.indexOf(request);
-          if (i >= 0) {
-            pendingRequests.splice(i, 1);
-            if (status === gm.GeocoderStatus.OK) {
-              request.resolve(result);
-              // Get confident and decrease the timeout by a little.
-              tickInterval = Math.max(0, Math.floor(tickInterval * 0.95));
-              console.log(tickInterval, queuedRequests.length)
-              // We need to digest since we are outside angular's scope.
-              $rootScope.$digest();
-            }
-            else if(status === gm.GeocoderStatus.OVER_QUERY_LIMIT) {
-              // Eek! Google rate limited us. Better wait a little longer.
-              tickInterval *= 2;
-              console.log('eek!', tickInterval)
-              queuedRequests.push(request); // Retry
-            }
-            else {
-              request.reject(status);
-            }
-          }
-        });
-        tickTimeout = queuedRequests.length > 0 ? setTimeout(tick, tickInterval)
-                                                : null;
-      }
-    }
-
-    function start() {
-      if (tickTimeout === null) tickTimeout = setTimeout(tick, 0);
-    }
+    var requester = new GoogleRequester(function(opts, callback) {
+      geocoder.geocode(opts, callback);
+    });
 
     geocode.request = function(address) {
-      var deferred = $q.defer();
-      deferred.address = address;
-      queuedRequests.push(deferred);
-      start();
-      return deferred.promise;
+      return requester.request({
+        address: address
+      });
     };
 
     return geocode;
   }
 ]);
 
+module.factory('GoogleRequester', [
+  '$q',
+  '$rootScope',
+  function($q, $rootScope) {
+    return function GoogleRequester(requestFn) {
+      var queuedRequests = [];
+      var pendingRequests = [];
+
+      var tickInterval = 100;
+      var tickTimeout = null;
+
+      function tick() {
+        if (queuedRequests.length > 0) {
+          var request = queuedRequests.shift();
+          pendingRequests.push(request);
+
+          requestFn(request.opts, function(result, status) {
+            if (cancel(request.opts, true)) {
+              if (status === 'OK') {
+                request.resolve(result);
+                // Get confident and decrease the timeout by a little.
+                tickInterval = Math.floor(tickInterval * 0.95);
+                // We need to digest since we are outside angular's scope.
+                $rootScope.$digest();
+              }
+              else if(status === 'OVER_QUERY_LIMIT') {
+                // Eek! Google rate limited us. Better wait a little longer.
+                tickInterval *= 2;
+                queuedRequests.push(request); // Retry
+              }
+              else {
+                request.reject(status);
+              }
+            }
+          });
+
+          tickTimeout = queuedRequests.length > 0 ?
+            setTimeout(tick, tickInterval) : null;
+        }
+      }
+
+      function pump() {
+        if (tickTimeout === null) tickTimeout = setTimeout(tick, 0);
+      }
+
+      this.request = function(opts) {
+        var deferred = $q.defer();
+        deferred.opts = opts;
+        queuedRequests.push(deferred);
+        pump();
+        return deferred.promise;
+      };
+
+      var cancel = this.cancel = function(opts, silent, equals) {
+        if (equals === undefined) {
+          equals = function(value){ return value.opts === opts; };
+        }
+        var i = indexOf(queuedRequests, equals);
+        if (i >= 0) {
+          if (!silent) queuedRequests[i].reject('Cancelled');
+          queuedRequests.splice(i, 1);
+          return true;
+        }
+        i = indexOf(pendingRequests, equals);
+        if (i >= 0) {
+          if (!silent) pendingRequests[i].reject('Cancelled');
+          pendingRequests.splice(i, 1);
+          return true;
+        }
+        return false;
+      };
+    };
+  }
+]);
+
 function equalsEdge(e1, e2) {
-  return e1.source.equals(e2.source) && e1.target.equals(e2.target);
+  return e1.source && e2.source && e1.source.equals(e2.source) &&
+         e1.target && e2.target && e1.target.equals(e2.target);
 }
 
-function indexOf(array, foundFn) {
+function indexOf(array, equals) {
   for (var i = 0, n = array.length; i < n; ++i) {
-    if (foundFn(array[i])) return i;
+    if (equals(array[i])) return i;
   }
   return -1;
 }
