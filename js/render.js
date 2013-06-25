@@ -36,9 +36,11 @@ module.directive('tracksRender', [
         resize();
         $window.addEventListener('resize', resize);
 
-        var routePath = d3.geo.path().projection(project.getProjection());
+        var path = d3.geo.path().projection(project.getProjection());
+        var simplify = d3.simplify().projection(project.getProjection());
+
         var routePaths = { type: 'FeatureCollection', features: [] };
-        var routeNodePairs = { type: 'FeatureCollection', features: [] };
+        // var routeNodePairs = { type: 'FeatureCollection', features: [] };
         // var routePolygons = {
         //   type: 'FeatureCollection',
         //   features: []
@@ -103,11 +105,11 @@ module.directive('tracksRender', [
         }
 
         function addRoute(route, edgeId) {
-          var pathCoords = route.overview_path.map(function(latLng) {
+          var pathFeatureCoords = route.overview_path.map(function(latLng) {
             return [ latLng.lng(), latLng.lat() ];
           });
-          var path = makeFeature(edgeId, 'LineString', pathCoords);
-          routePaths.features.push(path);
+          var pathFeature = makeFeature(edgeId, 'LineString', pathFeatureCoords);
+          routePaths.features.push(pathFeature);
           // routeNodePairs.features.push(makeFeature(edgeId, 'MultiPoint', [
           //   _.first(pathCoords),
           //   _.last(pathCoords)
@@ -123,7 +125,7 @@ module.directive('tracksRender', [
         }
 
         function updateRoutes() {
-          var bounds = routePath.bounds(routePaths);
+          var bounds = path.bounds(routePaths);
           var boundsWidth = bounds[1][0] - bounds[0][0];
           var boundsHeight = bounds[1][1] - bounds[0][1];
           var boundsScale;
@@ -135,8 +137,9 @@ module.directive('tracksRender', [
             boundsScale = 1 / (materialHeight / boundsHeight);
           }
 
-          var proj = project.getProjection();
+          var projection = project.getProjection();
           var routeStrokeWidth = 0.3 * boundsScale;
+          var routeMinArea = 0.15 * boundsScale;
 
           // // Remove Everything
           // g.selectAll('.route').remove();
@@ -167,7 +170,6 @@ module.directive('tracksRender', [
 
           enteringRoutes.append('path')
             .attr('class', 'path')
-            .attr('d', routePath)
             .style('stroke', function(d) {
               return genColor(d.properties.edgeId);
             });
@@ -184,20 +186,27 @@ module.directive('tracksRender', [
 
           routes.exit().remove();
 
-          routes.style('stroke-width', routeStrokeWidth);
+          routes.selectAll('.path')
+            .attr('d', function(d) {
+              var points = simplify(d.geometry);
+              return d3.svg.line()(points.filter(function(point) {
+                return point[2] >= routeMinArea;
+              }));
+            })
+            .style('stroke-width', routeStrokeWidth);
 
           // g.selectAll('.route').select('clippath path')
           //   .attr('d', function(d) {
           //     var c = d.geometry.coordinates;
           //     var r = nodeOuterRadius * boundsScale;
-          //     return svgBoundsPath(routePath.bounds(d), r);// +
-          //            svgSquarePath(proj(_.first(c)), r) +
-          //            svgSquarePath(proj(_.last(c)), r);
+          //     return svgBoundsPath(path.bounds(d), r);// +
+          //            svgSquarePath(projection(_.first(c)), r) +
+          //            svgSquarePath(projection(_.last(c)), r);
           //   });
 
           // clipPaths.append('circle')
           //   .datum(function(d) {
-          //     return proj(_.first(d.geometry.coordinates));
+          //     return projection(_.first(d.geometry.coordinates));
           //   })
           //   .attr('cx', function(d){ return d[0]; })
           //   .attr('cy', function(d){ return d[1]; })
@@ -215,7 +224,7 @@ module.directive('tracksRender', [
           nodes.enter().append('path')
             .attr('class', 'node')
             .attr('transform', function(d) {
-              var c = proj(d);
+              var c = projection(d);
               return 'translate(' + c[0] + ',' + c[1] + ')';
             })
             .style('stroke', function(d) {
