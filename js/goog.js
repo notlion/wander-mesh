@@ -104,10 +104,10 @@ module.directive('tracksMap', ['places', 'geocode', '$q', function(places, geoco
       });
 
       // HACK Just cram in some data..
-      // places.forEach(function(place) {
-      //   addMarker(new gm.LatLng(place.location[1], place.location[0]))
-      //     .setTitle(JSON.stringify(place));
-      // });
+      places.forEach(function(place) {
+        addMarker(new gm.LatLng(place.location[1], place.location[0]))
+          .setTitle(JSON.stringify(place));
+      });
       // var processedPlaces = [];
       // $q.all(_.first(places, 300).map(function(place) {
       //   return geocode.request(place.name).then(function(result) {

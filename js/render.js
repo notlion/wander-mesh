@@ -25,8 +25,8 @@ module.directive('tracksRender', [
         var materialWidth = 24;
         var materialHeight = 24;
         var materialAspect = materialWidth / materialHeight;
-        var nodeInnerRadius = 1 / 8;
-        var nodeOuterRadius = 3 / 8;
+        var nodeInnerRadius = 1 / 16;
+        var nodeOuterRadius = 2 / 8;
 
         function resize() {
           width = elem.clientWidth;
@@ -139,7 +139,7 @@ module.directive('tracksRender', [
 
           var projection = project.getProjection();
           var routeStrokeWidth = 0.3 * boundsScale;
-          var routeMinArea = 0.15 * boundsScale;
+          var routeMinArea = 0.05 * boundsScale;
 
           // // Remove Everything
           // g.selectAll('.route').remove();
@@ -218,26 +218,45 @@ module.directive('tracksRender', [
               return [
                 _.first(d.geometry.coordinates),
                 _.last(d.geometry.coordinates)
-              ];
+              ].map(projection);
             });
 
-          nodes.enter().append('path')
-            .attr('class', 'node')
-            .attr('transform', function(d) {
-              var c = projection(d);
-              return 'translate(' + c[0] + ',' + c[1] + ')';
-            })
+          nodes.enter().append('circle')
+            .attr('class', 'node-outer')
+            .attr('cx', function(d){ return d[0]; })
+            .attr('cy', function(d){ return d[1]; })
             .style('stroke', function(d) {
               return genColor(this.parentNode.__data__.properties.edgeId);
             });
 
+          nodes.enter().append('circle')
+            .attr('class', 'node-inner')
+            .attr('cx', function(d){ return d[0]; })
+            .attr('cy', function(d){ return d[1]; });
+
+          // nodes.enter().append('path')
+          //   .attr('class', 'node')
+          //   .attr('transform', function(d) {
+          //     var c = projection(d);
+          //     return 'translate(' + c[0] + ',' + c[1] + ')';
+          //   })
+          //   .style('stroke', function(d) {
+          //     return genColor(this.parentNode.__data__.properties.edgeId);
+          //   });
+
           nodes.exit().remove();
 
-          nodes.attr('d', d3.svg.arc()
-            .startAngle(0)
-            .endAngle(2 * Math.PI)
-            .innerRadius(nodeInnerRadius * boundsScale)
-            .outerRadius(nodeOuterRadius * boundsScale));
+          g.selectAll('.node-outer')
+            .attr('r', nodeOuterRadius * boundsScale);
+
+          g.selectAll('.node-inner')
+            .attr('r', nodeInnerRadius * boundsScale);
+
+          // nodes.attr('d', d3.svg.arc()
+          //   .startAngle(0)
+          //   .endAngle(2 * Math.PI)
+          //   .innerRadius(nodeInnerRadius * boundsScale)
+          //   .outerRadius(nodeOuterRadius * boundsScale));
 
           nodes.style('stroke-width', 0.05 * boundsScale);
 

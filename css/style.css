@@ -26,6 +26,10 @@ html, body {
   stroke-linecap: butt;
   fill: none;
 }
-.route .node {
+.node-outer {
   fill: #fff;
+}
+.node-inner {
+  fill: #f00;
+  stroke: none;
 }
