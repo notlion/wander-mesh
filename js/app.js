@@ -3,6 +3,7 @@
 'use strict';
 
 var app = window.app = angular.module('tracks', [
+  'ngRoute',
   'tracks.map',
   'tracks.goog',
   'tracks.render'

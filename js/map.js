@@ -2,7 +2,10 @@
 
 'use strict';
 
-var module = angular.module('tracks.map', []);
+var module = angular.module('tracks.map', [
+  'tracks.data',
+  'tracks.goog'
+]);
 
 module.directive('onGlobalTab', ['$window', '$parse', function($window, $parse) {
   return {
@@ -19,7 +22,7 @@ module.directive('onGlobalTab', ['$window', '$parse', function($window, $parse) 
   };
 }]);
 
-module.controller('MapController', ['$scope', function($scope) {
+module.controller('MapController', function($scope, places, markers) {
   var modes = [ 'map', 'render' ];
 
   $scope.mode = modes[0];
@@ -31,6 +34,20 @@ module.controller('MapController', ['$scope', function($scope) {
   $scope.isMode = function(name) {
     return $scope.mode === name;
   };
-}]);
+
+  $scope.places = places.list();
+  $scope.placeName = $scope.places[0];
+  $scope.mergeArcDistance = 0.01;
+
+  $scope.loadPlaces = function() {
+    places.get($scope.placeName).then(function(data) {
+      markers.clear();
+      places.mergeByDistance(data, $scope.mergeArcDistance)
+        .forEach(function(place) {
+          markers.add(place);
+        });
+    });
+  };
+});
 
 }());

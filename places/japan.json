@@ -1,0 +1,4017 @@
+[
+  {
+    "name": "Yokohama",
+    "population": 3631236,
+    "location": [139.6380256, 35.4437078]
+  },
+  {
+    "name": "Osaka, Osaka",
+    "population": 2645305,
+    "location": [135.5021651, 34.6937378]
+  },
+  {
+    "name": "Nagoya, Aichi",
+    "population": 2239464,
+    "location": [136.906398, 35.1814464]
+  },
+  {
+    "name": "Sapporo, Hokkaidō",
+    "population": 1904319,
+    "location": [141.3543763, 43.0620958]
+  },
+  {
+    "name": "Kobe",
+    "population": 1530847,
+    "location": [135.1955112, 34.690083]
+  },
+  {
+    "name": "Kyoto, Kyoto",
+    "population": 1468906,
+    "location": [135.7680294, 35.0116363]
+  },
+  {
+    "name": "Fukuoka, Fukuoka",
+    "population": 1430371,
+    "location": [130.4017155, 33.5903547]
+  },
+  {
+    "name": "Kawasaki, Kanagawa",
+    "population": 1373630,
+    "location": [139.7030511, 35.5309058]
+  },
+  {
+    "name": "Saitama, Saitama",
+    "population": 1192418,
+    "location": [139.6454822, 35.8617292]
+  },
+  {
+    "name": "Hiroshima, Hiroshima",
+    "population": 1163806,
+    "location": [132.4552927, 34.3852029]
+  },
+  {
+    "name": "Sendai, Miyagi",
+    "population": 1029552,
+    "location": [140.8693558, 38.268215]
+  },
+  {
+    "name": "Kitakyūshū",
+    "population": 986998,
+    "location": [130.8752161, 33.8834093]
+  },
+  {
+    "name": "Chiba, Chiba",
+    "population": 938695,
+    "location": [140.1062907, 35.6072668]
+  },
+  {
+    "name": "Setagaya, Tokyo",
+    "population": 855416,
+    "location": [139.6532473, 35.6465721]
+  },
+  {
+    "name": "Sakai, Osaka",
+    "population": 835333,
+    "location": [135.482998, 34.573262]
+  },
+  {
+    "name": "Niigata, Niigata",
+    "population": 813053,
+    "location": [139.0364126, 37.9161924]
+  },
+  {
+    "name": "Hamamatsu, Shizuoka",
+    "population": 811431,
+    "location": [137.7261258, 34.7108344]
+  },
+  {
+    "name": "Shizuoka, Shizuoka",
+    "population": 710944,
+    "location": [138.3827596, 34.975562]
+  },
+  {
+    "name": "Sagamihara, Kanagawa",
+    "population": 706342,
+    "location": [139.3731765, 35.5714621]
+  },
+  {
+    "name": "Nerima, Tokyo",
+    "population": 702202,
+    "location": [139.6516577, 35.7356234]
+  },
+  {
+    "name": "Okayama, Okayama",
+    "population": 701293,
+    "location": [133.9195019, 34.6551456]
+  },
+  {
+    "name": "Ōta, Tokyo",
+    "population": 674590,
+    "location": [139.7160511, 35.5612568]
+  },
+  {
+    "name": "Kumamoto, Kumamoto",
+    "population": 670348,
+    "location": [130.7078911, 32.8031004]
+  },
+  {
+    "name": "Edogawa, Tokyo",
+    "population": 661386,
+    "location": [139.8684267, 35.7066569]
+  },
+  {
+    "name": "Adachi, Tokyo",
+    "population": 629392,
+    "location": [139.8044788, 35.7756644]
+  },
+  {
+    "name": "Kagoshima, Kagoshima",
+    "population": 605196,
+    "location": [130.5571158, 31.5965535]
+  },
+  {
+    "name": "Funabashi, Chiba",
+    "population": 586762,
+    "location": [139.982618, 35.6947058]
+  },
+  {
+    "name": "Hachiōji, Tokyo",
+    "population": 567367,
+    "location": [139.3158056, 35.6663394]
+  },
+  {
+    "name": "Kawaguchi, Saitama",
+    "population": 552883,
+    "location": [139.7241712, 35.8077379]
+  },
+  {
+    "name": "Himeji, Hyōgo",
+    "population": 536170,
+    "location": [134.6853528, 34.815149]
+  },
+  {
+    "name": "Suginami, Tokyo",
+    "population": 534981,
+    "location": [139.6364379, 35.6995657]
+  },
+  {
+    "name": "Itabashi, Tokyo",
+    "population": 529059,
+    "location": [139.7092437, 35.75116480000001]
+  },
+  {
+    "name": "Matsuyama, Ehime",
+    "population": 515068,
+    "location": [132.7655752, 33.8391574]
+  },
+  {
+    "name": "Higashiōsaka, Osaka",
+    "population": 509157,
+    "location": [135.6010123, 34.6793301]
+  },
+  {
+    "name": "Utsunomiya, Tochigi",
+    "population": 507833,
+    "location": [139.8828072, 36.5551124]
+  },
+  {
+    "name": "Matsudo, Chiba",
+    "population": 477603,
+    "location": [139.903093, 35.7876491]
+  },
+  {
+    "name": "Nishinomiya, Hyōgo",
+    "population": 477056,
+    "location": [135.3415643, 34.7375965]
+  },
+  {
+    "name": "Kurashiki, Okayama",
+    "population": 472452,
+    "location": [133.7720841, 34.5850134]
+  },
+  {
+    "name": "Ichikawa, Chiba",
+    "population": 470149,
+    "location": [139.9310099, 35.7219115]
+  },
+  {
+    "name": "Ōita, Ōita",
+    "population": 467267,
+    "location": [131.609272, 33.2395578]
+  },
+  {
+    "name": "Fukuyama, Hiroshima",
+    "population": 461368,
+    "location": [133.3623127, 34.4858993]
+  },
+  {
+    "name": "Amagasaki, Hyōgo",
+    "population": 461202,
+    "location": [135.4063757, 34.7337339]
+  },
+  {
+    "name": "Kanazawa, Ishikawa",
+    "population": 455595,
+    "location": [136.6562051, 36.56132540000001]
+  },
+  {
+    "name": "Nagasaki, Nagasaki",
+    "population": 448792,
+    "location": [129.877667, 32.7502856]
+  },
+  {
+    "name": "Koto, Tokyo",
+    "population": 436337,
+    "location": [139.8174097, 35.6728535]
+  },
+  {
+    "name": "Katsushika, Tokyo",
+    "population": 428066,
+    "location": [139.8471797, 35.7435748]
+  },
+  {
+    "name": "Yokosuka, Kanagawa",
+    "population": 421397,
+    "location": [139.6722005, 35.2813412]
+  },
+  {
+    "name": "Toyama, Toyama",
+    "population": 421116,
+    "location": [137.2136768, 36.6959518]
+  },
+  {
+    "name": "Toyota, Aichi",
+    "population": 420286,
+    "location": [137.1562491, 35.0823947]
+  },
+  {
+    "name": "Takamatsu, Kagawa",
+    "population": 418557,
+    "location": [134.046574, 34.3427879]
+  },
+  {
+    "name": "Machida, Tokyo",
+    "population": 413786,
+    "location": [139.4386186, 35.546631]
+  },
+  {
+    "name": "Gifu, Gifu",
+    "population": 412779,
+    "location": [136.7606537, 35.4232984]
+  },
+  {
+    "name": "Hirakata, Osaka",
+    "population": 406201,
+    "location": [135.6506583, 34.8143402]
+  },
+  {
+    "name": "Fujisawa, Kanagawa",
+    "population": 402628,
+    "location": [139.4909942, 35.3391398]
+  },
+  {
+    "name": "Kashiwa, Chiba",
+    "population": 389036,
+    "location": [139.9758505, 35.8676124]
+  },
+  {
+    "name": "Toyonaka, Osaka",
+    "population": 387269,
+    "location": [135.4697387, 34.7812658]
+  },
+  {
+    "name": "Nagano, Nagano",
+    "population": 378204,
+    "location": [138.1942432, 36.6485496]
+  },
+  {
+    "name": "Toyohashi, Aichi",
+    "population": 377045,
+    "location": [137.3914662, 34.7691995]
+  },
+  {
+    "name": "Ichinomiya, Aichi",
+    "population": 375939,
+    "location": [136.8024604, 35.3039843]
+  },
+  {
+    "name": "Wakayama, Wakayama",
+    "population": 372175,
+    "location": [135.1708083, 34.2305113]
+  },
+  {
+    "name": "Okazaki, Aichi",
+    "population": 371380,
+    "location": [137.1743293, 34.9543786]
+  },
+  {
+    "name": "Miyazaki, Miyazaki",
+    "population": 369473,
+    "location": [131.4202411, 31.9076736]
+  },
+  {
+    "name": "Nara, Nara",
+    "population": 367393,
+    "location": [135.8050002, 34.6850869]
+  },
+  {
+    "name": "Suita, Osaka",
+    "population": 354600,
+    "location": [135.51686, 34.7594526]
+  },
+  {
+    "name": "Takatsuki, Osaka",
+    "population": 354228,
+    "location": [135.6172716, 34.8461585]
+  },
+  {
+    "name": "Shinagawa, Tokyo",
+    "population": 353887,
+    "location": [139.7301861, 35.6092261]
+  },
+  {
+    "name": "Asahikawa, Hokkaidō",
+    "population": 350511,
+    "location": [142.364819, 43.7706355]
+  },
+  {
+    "name": "Iwaki, Fukushima",
+    "population": 349947,
+    "location": [140.8876817, 37.0504195]
+  },
+  {
+    "name": "Kōchi, Kōchi",
+    "population": 342944,
+    "location": [133.5311675, 33.5588035]
+  },
+  {
+    "name": "Takasaki, Gunma",
+    "population": 341838,
+    "location": [139.0032936, 36.3219088]
+  },
+  {
+    "name": "Kōriyama, Fukushima",
+    "population": 339395,
+    "location": [140.3597421, 37.400529]
+  },
+  {
+    "name": "Tokorozawa, Saitama",
+    "population": 338560,
+    "location": [139.4686101, 35.7996715]
+  },
+  {
+    "name": "Kawagoe, Saitama",
+    "population": 335693,
+    "location": [139.485793, 35.9251006]
+  },
+  {
+    "name": "Kita, Tokyo",
+    "population": 330646,
+    "location": [139.7334805, 35.7528042]
+  },
+  {
+    "name": "Akita, Akita",
+    "population": 329287,
+    "location": [140.1025642, 39.7200079]
+  },
+  {
+    "name": "Ōtsu, Shiga",
+    "population": 329024,
+    "location": [135.8546074, 35.0178929]
+  },
+  {
+    "name": "Koshigaya, Saitama",
+    "population": 318592,
+    "location": [139.7909377, 35.8910841]
+  },
+  {
+    "name": "Maebashi, Gunma",
+    "population": 318058,
+    "location": [139.0634281, 36.3894816]
+  },
+  {
+    "name": "Naha, Okinawa",
+    "population": 314162,
+    "location": [127.6791568, 26.2123124]
+  },
+  {
+    "name": "Nakano, Tokyo",
+    "population": 312939,
+    "location": [139.6638354, 35.7073985]
+  },
+  {
+    "name": "Shinjuku, Tokyo",
+    "population": 309463,
+    "location": [139.7035494, 35.6938401]
+  },
+  {
+    "name": "Yokkaichi, Mie",
+    "population": 306584,
+    "location": [136.6244847, 34.9651567]
+  },
+  {
+    "name": "Aomori, Aomori",
+    "population": 305884,
+    "location": [140.7473647, 40.822072]
+  },
+  {
+    "name": "Kurume, Fukuoka",
+    "population": 305147,
+    "location": [130.5083735, 33.3192865]
+  },
+  {
+    "name": "Kasugai, Aichi",
+    "population": 300713,
+    "location": [136.9722236, 35.247611]
+  },
+  {
+    "name": "Morioka, Iwate",
+    "population": 299746,
+    "location": [141.1544838, 39.702053]
+  },
+  {
+    "name": "Akashi, Hyōgo",
+    "population": 292162,
+    "location": [134.9971787, 34.6431066]
+  },
+  {
+    "name": "Fukushima, Fukushima",
+    "population": 289355,
+    "location": [140.4747282, 37.7608337]
+  },
+  {
+    "name": "Tsu, Mie",
+    "population": 289215,
+    "location": [136.5056975, 34.718596]
+  },
+  {
+    "name": "Shimonoseki, Yamaguchi",
+    "population": 286073,
+    "location": [130.941459, 33.9578307]
+  },
+  {
+    "name": "Nagaoka, Niigata",
+    "population": 281222,
+    "location": [138.8512772, 37.4462652]
+  },
+  {
+    "name": "Ichihara, Chiba",
+    "population": 279591,
+    "location": [140.1156648, 35.4978377]
+  },
+  {
+    "name": "Hakodate, Hokkaidō",
+    "population": 277056,
+    "location": [140.7288103, 41.7687933]
+  },
+  {
+    "name": "Yao, Osaka",
+    "population": 273244,
+    "location": [135.6009775, 34.6268635]
+  },
+  {
+    "name": "Ibaraki, Osaka",
+    "population": 272240,
+    "location": [135.5685046, 34.8163384]
+  },
+  {
+    "name": "Fukui, Fukui",
+    "population": 268574,
+    "location": [136.2194938, 36.0640669]
+  },
+  {
+    "name": "Meguro, Tokyo",
+    "population": 267798,
+    "location": [139.6981712, 35.6414629]
+  },
+  {
+    "name": "Kakogawa, Hyōgo",
+    "population": 267631,
+    "location": [134.8411775, 34.7569503]
+  },
+  {
+    "name": "Tokushima, Tokushima",
+    "population": 266370,
+    "location": [134.5548438, 34.0702703]
+  },
+  {
+    "name": "Mito, Ibaraki",
+    "population": 264062,
+    "location": [140.4712215, 36.3658556]
+  },
+  {
+    "name": "Hiratsuka, Kanagawa",
+    "population": 260419,
+    "location": [139.3493679, 35.335488]
+  },
+  {
+    "name": "Toshima, Tokyo",
+    "population": 256009,
+    "location": [139.7154048, 35.7324588]
+  },
+  {
+    "name": "Yamagata, Yamagata",
+    "population": 255370,
+    "location": [140.3396017, 38.2554388]
+  },
+  {
+    "name": "Sasebo, Nagasaki",
+    "population": 254650,
+    "location": [129.7151101, 33.1799153]
+  },
+  {
+    "name": "Fuchū, Tokyo",
+    "population": 248445,
+    "location": [139.4776614, 35.6689735]
+  },
+  {
+    "name": "Kure, Hiroshima",
+    "population": 246118,
+    "location": [132.5658045, 34.2492541]
+  },
+  {
+    "name": "Hachinohe, Aomori",
+    "population": 241613,
+    "location": [141.4883986, 40.5122839]
+  },
+  {
+    "name": "Saga, Saga",
+    "population": 239932,
+    "location": [130.3008576, 33.263482]
+  },
+  {
+    "name": "Neyagawa, Osaka",
+    "population": 239029,
+    "location": [135.6280998, 34.7660929]
+  },
+  {
+    "name": "Sōka, Saitama",
+    "population": 237964,
+    "location": [139.8054022, 35.8253547]
+  },
+  {
+    "name": "Sumida, Tokyo",
+    "population": 237433,
+    "location": [139.8014968, 35.71072150000001]
+  },
+  {
+    "name": "Fuji, Shizuoka",
+    "population": 237279,
+    "location": [138.6762728, 35.1613985]
+  },
+  {
+    "name": "Kasukabe, Saitama",
+    "population": 236854,
+    "location": [139.7523007, 35.9751984]
+  },
+  {
+    "name": "Chigasaki, Kanagawa",
+    "population": 231005,
+    "location": [139.4047163, 35.3338596]
+  },
+  {
+    "name": "Matsumoto, Nagano",
+    "population": 227392,
+    "location": [137.9720341, 36.2380381]
+  },
+  {
+    "name": "Atsugi, Kanagawa",
+    "population": 225163,
+    "location": [139.3624889, 35.4430818]
+  },
+  {
+    "name": "Yamato, Kanagawa",
+    "population": 223127,
+    "location": [139.4579498, 35.4875124]
+  },
+  {
+    "name": "Ageo, Saitama",
+    "population": 222479,
+    "location": [139.5932055, 35.9773805]
+  },
+  {
+    "name": "Takarazuka, Hyōgo",
+    "population": 222071,
+    "location": [135.3600729, 34.7997673]
+  },
+  {
+    "name": "Chōfu, Tokyo",
+    "population": 219053,
+    "location": [139.5406936, 35.6506145]
+  },
+  {
+    "name": "Ōta, Gunma",
+    "population": 214049,
+    "location": [139.3754708, 36.2911223]
+  },
+  {
+    "name": "Tsukuba, Ibaraki",
+    "population": 207314,
+    "location": [140.0766423, 36.0834857]
+  },
+  {
+    "name": "Numazu, Shizuoka",
+    "population": 206818,
+    "location": [138.8634925, 35.0955842]
+  },
+  {
+    "name": "Jōetsu, Niigata",
+    "population": 206175,
+    "location": [138.2360802, 37.1478477]
+  },
+  {
+    "name": "Shibuya, Tokyo",
+    "population": 205512,
+    "location": [139.6982122, 35.6640352]
+  },
+  {
+    "name": "Minato, Tokyo",
+    "population": 205196,
+    "location": [139.7515992, 35.6580681]
+  },
+  {
+    "name": "Kumagaya, Saitama",
+    "population": 204853,
+    "location": [139.3886446, 36.1473097]
+  },
+  {
+    "name": "Isesaki, Gunma",
+    "population": 204240,
+    "location": [139.1967703, 36.3113639]
+  },
+  {
+    "name": "Kishiwada, Osaka",
+    "population": 200538,
+    "location": [135.3708291, 34.4606341]
+  },
+  {
+    "name": "Tottori, Tottori",
+    "population": 200315,
+    "location": [134.2350914, 35.5011326]
+  },
+  {
+    "name": "Kōfu, Yamanashi",
+    "population": 199374,
+    "location": [138.5682015, 35.66228]
+  },
+  {
+    "name": "Odawara, Kanagawa",
+    "population": 198841,
+    "location": [139.1521538, 35.2645639]
+  },
+  {
+    "name": "Suzuka, Mie",
+    "population": 197437,
+    "location": [136.5842092, 34.8818796]
+  },
+  {
+    "name": "Matsue, Shimane",
+    "population": 195875,
+    "location": [133.048375, 35.4680595]
+  },
+  {
+    "name": "Hitachi, Ibaraki",
+    "population": 195844,
+    "location": [140.6514693, 36.5991539]
+  },
+  {
+    "name": "Bunkyo, Tokyo",
+    "population": 194933,
+    "location": [139.752167, 35.7080677]
+  },
+  {
+    "name": "Arakawa, Tokyo",
+    "population": 194777,
+    "location": [139.783369, 35.73608]
+  },
+  {
+    "name": "Itami, Hyōgo",
+    "population": 194488,
+    "location": [135.4009473, 34.78430609999999]
+  },
+  {
+    "name": "Nishitōkyō, Tokyo",
+    "population": 193350,
+    "location": [139.5381564, 35.7254963]
+  },
+  {
+    "name": "Yamaguchi, Yamaguchi",
+    "population": 192008,
+    "location": [131.4737269, 34.178496]
+  },
+  {
+    "name": "Uji, Kyoto",
+    "population": 191297,
+    "location": [135.7998544, 34.8844606]
+  },
+  {
+    "name": "Higashihiroshima, Hiroshima",
+    "population": 187711,
+    "location": [132.7433068, 34.4263804]
+  },
+  {
+    "name": "Hirosaki, Aomori",
+    "population": 185865,
+    "location": [140.4639223, 40.6031243]
+  },
+  {
+    "name": "Kodaira, Tokyo",
+    "population": 185829,
+    "location": [139.477456, 35.7285774]
+  },
+  {
+    "name": "Yachiyo, Chiba",
+    "population": 184655,
+    "location": [140.0997724, 35.7224684]
+  },
+  {
+    "name": "Kushiro, Hokkaidō",
+    "population": 182263,
+    "location": [144.3813556, 42.9848542]
+  },
+  {
+    "name": "Mitaka, Tokyo",
+    "population": 180797,
+    "location": [139.5595842, 35.683513]
+  },
+  {
+    "name": "Hino, Tokyo",
+    "population": 179482,
+    "location": [139.3949261, 35.6713374]
+  },
+  {
+    "name": "Izumi, Osaka",
+    "population": 179352,
+    "location": [135.4235574, 34.483527]
+  },
+  {
+    "name": "Takaoka, Toyama",
+    "population": 178965,
+    "location": [137.0257282, 36.7540964]
+  },
+  {
+    "name": "Ube, Yamaguchi",
+    "population": 176370,
+    "location": [131.2467858, 33.9515087]
+  },
+  {
+    "name": "Anjō, Aichi",
+    "population": 176046,
+    "location": [137.080297, 34.9586414]
+  },
+  {
+    "name": "Tachikawa, Tokyo",
+    "population": 175639,
+    "location": [139.4078431, 35.7140142]
+  },
+  {
+    "name": "Tomakomai, Hokkaidō",
+    "population": 173761,
+    "location": [141.6053721, 42.6343021]
+  },
+  {
+    "name": "Kamakura, Kanagawa",
+    "population": 173588,
+    "location": [139.5466868, 35.3192254]
+  },
+  {
+    "name": "Iwata, Shizuoka",
+    "population": 172583,
+    "location": [137.8515133, 34.71790350000001]
+  },
+  {
+    "name": "Sakura, Chiba",
+    "population": 171472,
+    "location": [140.2239639, 35.7234861]
+  },
+  {
+    "name": "Imabari, Ehime",
+    "population": 170986,
+    "location": [132.99786, 34.0660979]
+  },
+  {
+    "name": "Matsusaka, Mie",
+    "population": 169571,
+    "location": [136.5275927, 34.5779931]
+  },
+  {
+    "name": "Miyakonojō, Miyazaki",
+    "population": 169384,
+    "location": [131.0616214, 31.7195903]
+  },
+  {
+    "name": "Hadano, Kanagawa",
+    "population": 169201,
+    "location": [139.2199432, 35.3747359]
+  },
+  {
+    "name": "Taitō, Tokyo",
+    "population": 168277,
+    "location": [139.7799956, 35.712607]
+  },
+  {
+    "name": "Obihiro, Hokkaidō",
+    "population": 168188,
+    "location": [143.1961031, 42.9238989]
+  },
+  {
+    "name": "Ishinomaki, Miyagi",
+    "population": 163840,
+    "location": [141.3029167, 38.4344802]
+  },
+  {
+    "name": "Ōgaki, Gifu",
+    "population": 163047,
+    "location": [136.6127502, 35.3593842]
+  },
+  {
+    "name": "Oyama, Tochigi",
+    "population": 162283,
+    "location": [139.800131, 36.3146714]
+  },
+  {
+    "name": "Ueda, Nagano",
+    "population": 161887,
+    "location": [138.2488888, 36.4019115]
+  },
+  {
+    "name": "Toyokawa, Aichi",
+    "population": 161595,
+    "location": [137.3755423, 34.8268506]
+  },
+  {
+    "name": "Narashino, Chiba",
+    "population": 159758,
+    "location": [140.0243648, 35.6830349]
+  },
+  {
+    "name": "Urayasu, Chiba",
+    "population": 159312,
+    "location": [139.9022034, 35.6539835]
+  },
+  {
+    "name": "Ashikaga, Tochigi",
+    "population": 157793,
+    "location": [139.4496984, 36.3401513]
+  },
+  {
+    "name": "Kawanishi, Hyōgo",
+    "population": 157461,
+    "location": [135.417278, 34.8301347]
+  },
+  {
+    "name": "Nagareyama, Chiba",
+    "population": 156686,
+    "location": [139.9026602, 35.8563097]
+  },
+  {
+    "name": "Sayama, Saitama",
+    "population": 156634,
+    "location": [139.4122129, 35.8529421]
+  },
+  {
+    "name": "Niiza, Saitama",
+    "population": 155926,
+    "location": [139.565369, 35.79351090000001]
+  },
+  {
+    "name": "Hitachinaka, Ibaraki",
+    "population": 155338,
+    "location": [140.5346762, 36.3966149]
+  },
+  {
+    "name": "Noda, Chiba",
+    "population": 153422,
+    "location": [139.8747636, 35.9551921]
+  },
+  {
+    "name": "Shūnan, Yamaguchi",
+    "population": 150299,
+    "location": [131.8061858, 34.0551188]
+  },
+  {
+    "name": "Tama, Tokyo",
+    "population": 149404,
+    "location": [139.4463069, 35.6370041]
+  },
+  {
+    "name": "Yonago, Tottori",
+    "population": 149140,
+    "location": [133.3309447, 35.4280717]
+  },
+  {
+    "name": "Komaki, Aichi",
+    "population": 149060,
+    "location": [136.9109515, 35.2903104]
+  },
+  {
+    "name": "Iruma, Saitama",
+    "population": 148203,
+    "location": [139.3910576, 35.8357657]
+  },
+  {
+    "name": "Onomichi, Hiroshima",
+    "population": 148085,
+    "location": [133.2048886, 34.4088756]
+  },
+  {
+    "name": "Iwakuni, Yamaguchi",
+    "population": 146885,
+    "location": [132.2188479, 34.1665616]
+  },
+  {
+    "name": "Higashimurayama, Tokyo",
+    "population": 146585,
+    "location": [139.4684892, 35.7545968]
+  },
+  {
+    "name": "Moriguchi, Osaka",
+    "population": 146294,
+    "location": [135.5639036, 34.7376953]
+  },
+  {
+    "name": "Fukaya, Saitama",
+    "population": 146128,
+    "location": [139.2814638, 36.1974437]
+  },
+  {
+    "name": "Izumo, Shimane",
+    "population": 146115,
+    "location": [132.7546815, 35.3670351]
+  },
+  {
+    "name": "Kakamigahara, Gifu",
+    "population": 145126,
+    "location": [136.8482643, 35.3988691]
+  },
+  {
+    "name": "Kariya, Aichi",
+    "population": 145117,
+    "location": [137.0021069, 34.9892245]
+  },
+  {
+    "name": "Koga, Ibaraki",
+    "population": 144392,
+    "location": [139.7025248, 36.1846451]
+  },
+  {
+    "name": "Tsuchiura, Ibaraki",
+    "population": 143986,
+    "location": [140.1960233, 36.0718812]
+  },
+  {
+    "name": "Isahaya, Nagasaki",
+    "population": 142635,
+    "location": [130.0530952, 32.8434379]
+  },
+  {
+    "name": "Ōme, Tokyo",
+    "population": 141708,
+    "location": [139.2758298, 35.7879958]
+  },
+  {
+    "name": "Kuwana, Mie",
+    "population": 140816,
+    "location": [136.683803, 35.0622161]
+  },
+  {
+    "name": "Tsuruoka, Yamagata",
+    "population": 140097,
+    "location": [139.8267307, 38.7271972]
+  },
+  {
+    "name": "Musashino, Tokyo",
+    "population": 138516,
+    "location": [139.56626, 35.7177841]
+  },
+  {
+    "name": "Inazawa, Aichi",
+    "population": 137475,
+    "location": [136.780202, 35.2481321]
+  },
+  {
+    "name": "Ōsaki, Miyagi",
+    "population": 137164,
+    "location": [140.9553495, 38.57707140000001]
+  },
+  {
+    "name": "Yatsushiro, Kumamoto",
+    "population": 134491,
+    "location": [130.6017433, 32.5074371]
+  },
+  {
+    "name": "Ise, Mie",
+    "population": 133547,
+    "location": [136.7093359, 34.48751439999999]
+  },
+  {
+    "name": "Abiko, Chiba",
+    "population": 133533,
+    "location": [140.0282255, 35.8641227]
+  },
+  {
+    "name": "Nobeoka, Miyazaki",
+    "population": 132480,
+    "location": [131.6650816, 32.581964]
+  },
+  {
+    "name": "Seto, Aichi",
+    "population": 132311,
+    "location": [137.0841713, 35.2236135]
+  },
+  {
+    "name": "Iizuka, Fukuoka",
+    "population": 132208,
+    "location": [130.6915113, 33.6459075]
+  },
+  {
+    "name": "Otaru, Hokkaidō",
+    "population": 130255,
+    "location": [140.9946621, 43.1907173]
+  },
+  {
+    "name": "Kadoma, Osaka",
+    "population": 130026,
+    "location": [135.5868904, 34.7395423]
+  },
+  {
+    "name": "Fujieda, Shizuoka",
+    "population": 129637,
+    "location": [138.2574584, 34.8673673]
+  },
+  {
+    "name": "Aizuwakamatsu, Fukushima",
+    "population": 129388,
+    "location": [139.9298096, 37.4947611]
+  },
+  {
+    "name": "Karatsu, Saga",
+    "population": 129194,
+    "location": [129.9681335, 33.4501738]
+  },
+  {
+    "name": "Misato, Saitama (city)",
+    "population": 128956,
+    "location": [139.8722748, 35.8301491]
+  },
+  {
+    "name": "Okinawa, Okinawa",
+    "population": 128421,
+    "location": [127.8055832, 26.3344266]
+  },
+  {
+    "name": "Ōshū, Iwate",
+    "population": 128273,
+    "location": [141.139141, 39.1445286]
+  },
+  {
+    "name": "Minoh, Osaka",
+    "population": 127757,
+    "location": [135.4704626, 34.8269301]
+  },
+  {
+    "name": "Kirishima, Kagoshima",
+    "population": 127726,
+    "location": [130.7631335, 31.74102659999999]
+  },
+  {
+    "name": "Zama, Kanagawa",
+    "population": 127582,
+    "location": [139.4076731, 35.4885872]
+  },
+  {
+    "name": "Ōmuta, Fukuoka",
+    "population": 127474,
+    "location": [130.4459852, 33.0302622]
+  },
+  {
+    "name": "Beppu, Ōita",
+    "population": 127345,
+    "location": [131.4912138, 33.28462]
+  },
+  {
+    "name": "Asaka, Saitama",
+    "population": 126902,
+    "location": [139.5939165, 35.7972524]
+  },
+  {
+    "name": "Ebina, Kanagawa",
+    "population": 126035,
+    "location": [139.3908031, 35.4464459]
+  },
+  {
+    "name": "Daitō, Osaka",
+    "population": 125847,
+    "location": [135.6236594, 34.7120153]
+  },
+  {
+    "name": "Matsubara, Osaka",
+    "population": 125274,
+    "location": [135.5518501, 34.5778791]
+  },
+  {
+    "name": "Kiryū, Gunma",
+    "population": 124892,
+    "location": [139.3306875, 36.4054907]
+  },
+  {
+    "name": "Narita, Chiba",
+    "population": 124773,
+    "location": [140.3187806, 35.7766076]
+  },
+  {
+    "name": "Kashihara, Nara",
+    "population": 124679,
+    "location": [135.792626, 34.5094478]
+  },
+  {
+    "name": "Kitami, Hokkaidō",
+    "population": 124291,
+    "location": [143.8958758, 43.8040314]
+  },
+  {
+    "name": "Kisarazu, Chiba",
+    "population": 123743,
+    "location": [139.9168301, 35.3759744]
+  },
+  {
+    "name": "Kusatsu, Shiga",
+    "population": 123512,
+    "location": [135.959936, 35.01313409999999]
+  },
+  {
+    "name": "Niihama, Ehime",
+    "population": 123329,
+    "location": [133.2833512, 33.96028950000001]
+  },
+  {
+    "name": "Ichinoseki, Iwate",
+    "population": 123155,
+    "location": [141.1268004, 38.9346819]
+  },
+  {
+    "name": "Sano, Tochigi",
+    "population": 123034,
+    "location": [139.5931177, 36.308578]
+  },
+  {
+    "name": "Tondabayashi, Osaka",
+    "population": 122205,
+    "location": [135.5971277, 34.49952740000001]
+  },
+  {
+    "name": "Fujinomiya, Shizuoka",
+    "population": 122122,
+    "location": [138.6216428, 35.2220541]
+  },
+  {
+    "name": "Ebetsu, Hokkaidō",
+    "population": 120940,
+    "location": [141.5362468, 43.1037445]
+  },
+  {
+    "name": "Yaizu, Shizuoka",
+    "population": 120331,
+    "location": [138.3231893, 34.8669202]
+  },
+  {
+    "name": "Kōnosu, Saitama",
+    "population": 119768,
+    "location": [139.5221694, 36.0657584]
+  },
+  {
+    "name": "Kokubunji, Tokyo",
+    "population": 118801,
+    "location": [139.4631912, 35.7103347]
+  },
+  {
+    "name": "Kakegawa, Shizuoka",
+    "population": 118660,
+    "location": [137.998168, 34.7687667]
+  },
+  {
+    "name": "Toda, Saitama",
+    "population": 118591,
+    "location": [139.6778917, 35.8176157]
+  },
+  {
+    "name": "Habikino, Osaka",
+    "population": 118281,
+    "location": [135.6062119, 34.5580348]
+  },
+  {
+    "name": "Handa, Aichi",
+    "population": 117927,
+    "location": [136.937811, 34.8926595]
+  },
+  {
+    "name": "Higashiōmi, Shiga",
+    "population": 117487,
+    "location": [136.2077649, 35.1124558]
+  },
+  {
+    "name": "Hōfu, Yamaguchi",
+    "population": 116393,
+    "location": [131.56269, 34.0517516]
+  },
+  {
+    "name": "Nasushiobara, Tochigi",
+    "population": 115633,
+    "location": [140.046066, 36.961698]
+  },
+  {
+    "name": "Higashikurume, Tokyo",
+    "population": 115405,
+    "location": [139.5297392, 35.7580477]
+  },
+  {
+    "name": "Ikoma, Nara",
+    "population": 115359,
+    "location": [135.7005364, 34.6919598]
+  },
+  {
+    "name": "Hatsukaichi, Hiroshima",
+    "population": 115184,
+    "location": [132.331622, 34.3482578]
+  },
+  {
+    "name": "Koganei, Tokyo",
+    "population": 115116,
+    "location": [139.5029916, 35.6994733]
+  },
+  {
+    "name": "Sakata, Yamagata",
+    "population": 114964,
+    "location": [139.8365153, 38.9144331]
+  },
+  {
+    "name": "Tajimi, Gifu",
+    "population": 114866,
+    "location": [137.1320765, 35.3328]
+  },
+  {
+    "name": "Kawachinagano, Osaka",
+    "population": 114428,
+    "location": [135.5642257, 34.4580844]
+  },
+  {
+    "name": "Uruma, Okinawa",
+    "population": 114087,
+    "location": [127.8290812, 26.4270624]
+  },
+  {
+    "name": "Sanda, Hyōgo",
+    "population": 113600,
+    "location": [135.225309, 34.8895543]
+  },
+  {
+    "name": "Saijō, Ehime",
+    "population": 112543,
+    "location": [133.1811697, 33.9195105]
+  },
+  {
+    "name": "Mishima, Shizuoka",
+    "population": 112320,
+    "location": [138.9185126, 35.11840249999999]
+  },
+  {
+    "name": "Akishima, Tokyo",
+    "population": 111763,
+    "location": [139.3535483, 35.7057552]
+  },
+  {
+    "name": "Hikone, Shiga",
+    "population": 110945,
+    "location": [136.2596226, 35.274461]
+  },
+  {
+    "name": "Chikusei, Ibaraki",
+    "population": 110813,
+    "location": [139.9831233, 36.3070525]
+  },
+  {
+    "name": "Hakusan, Ishikawa",
+    "population": 110563,
+    "location": [136.5658915, 36.51442710000001]
+  },
+  {
+    "name": "Marugame, Kagawa",
+    "population": 110550,
+    "location": [133.7977056, 34.2895062]
+  },
+  {
+    "name": "Toride, Ibaraki",
+    "population": 109953,
+    "location": [140.0504684, 35.9114415]
+  },
+  {
+    "name": "Tsuyama, Okayama",
+    "population": 109493,
+    "location": [134.0045428, 35.0691155]
+  },
+  {
+    "name": "Komatsu, Ishikawa",
+    "population": 109285,
+    "location": [136.445571, 36.4083514]
+  },
+  {
+    "name": "Urasoe, Okinawa",
+    "population": 108052,
+    "location": [127.7217987, 26.2458164]
+  },
+  {
+    "name": "Kasuga, Fukuoka",
+    "population": 107845,
+    "location": [130.4702806, 33.532571]
+  },
+  {
+    "name": "Iida, Nagano",
+    "population": 107129,
+    "location": [137.8218215, 35.5146999]
+  },
+  {
+    "name": "Tōkai, Aichi",
+    "population": 106708,
+    "location": [136.90253, 35.0228426]
+  },
+  {
+    "name": "Nishio, Aichi",
+    "population": 106643,
+    "location": [137.0618498, 34.8619367]
+  },
+  {
+    "name": "Kanoya, Kagoshima",
+    "population": 105673,
+    "location": [130.8520774, 31.3782921]
+  },
+  {
+    "name": "Fujimi, Saitama",
+    "population": 105286,
+    "location": [139.5490737, 35.8567586]
+  },
+  {
+    "name": "Chūō, Tokyo",
+    "population": 104997,
+    "location": [139.7718614, 35.6706505]
+  },
+  {
+    "name": "Kamagaya, Chiba",
+    "population": 104564,
+    "location": [140.0007904, 35.7767501]
+  },
+  {
+    "name": "Ikeda, Osaka",
+    "population": 104426,
+    "location": [135.4284439, 34.8217051]
+  },
+  {
+    "name": "Fujimino, Saitama",
+    "population": 103724,
+    "location": [139.5197639, 35.8795383]
+  },
+  {
+    "name": "Hanamaki, Iwate",
+    "population": 103718,
+    "location": [141.1166453, 39.3885784]
+  },
+  {
+    "name": "Kanuma, Tochigi",
+    "population": 103690,
+    "location": [139.7450127, 36.56711050000001]
+  },
+  {
+    "name": "Shibata, Niigata",
+    "population": 103490,
+    "location": [139.3278923, 37.9508856]
+  },
+  {
+    "name": "Mihara, Hiroshima",
+    "population": 103209,
+    "location": [133.0786576, 34.3974332]
+  },
+  {
+    "name": "Sanjō, Niigata",
+    "population": 103199,
+    "location": [138.961689, 37.6367679]
+  },
+  {
+    "name": "Yokote, Akita",
+    "population": 101234,
+    "location": [140.5531593, 39.311251]
+  },
+  {
+    "name": "Isehara, Kanagawa",
+    "population": 100779,
+    "location": [139.3149729, 35.4029686]
+  },
+  {
+    "name": "Satsumasendai, Kagoshima",
+    "population": 100730,
+    "location": [130.3042445, 31.8135171]
+  },
+  {
+    "name": "Saku, Nagano",
+    "population": 100077,
+    "location": [138.4768306, 36.2488683]
+  },
+  {
+    "name": "Kōnan, Aichi",
+    "population": 100064,
+    "location": [136.8706172, 35.3320112]
+  },
+  {
+    "name": "Sakado, Saitama",
+    "population": 99680,
+    "location": [139.4029055, 35.9571698]
+  },
+  {
+    "name": "Iga, Mie",
+    "population": 99662,
+    "location": [136.1299103, 34.7685953]
+  },
+  {
+    "name": "Izumisano, Osaka",
+    "population": 99636,
+    "location": [135.3273374, 34.4068477]
+  },
+  {
+    "name": "Kani, Gifu",
+    "population": 99318,
+    "location": [137.0610107, 35.4261208]
+  },
+  {
+    "name": "Chikushino, Fukuoka",
+    "population": 98914,
+    "location": [130.5156572, 33.4963423]
+  },
+  {
+    "name": "Azumino, Nagano",
+    "population": 97084,
+    "location": [137.899632, 36.3029426]
+  },
+  {
+    "name": "Shimada, Shizuoka",
+    "population": 95762,
+    "location": [138.1759966, 34.8363636]
+  },
+  {
+    "name": "Takayama, Gifu",
+    "population": 94879,
+    "location": [137.2521729, 36.1461236]
+  },
+  {
+    "name": "Munakata, Fukuoka",
+    "population": 94877,
+    "location": [130.5407182, 33.8054314]
+  },
+  {
+    "name": "Kitakami, Iwate",
+    "population": 94806,
+    "location": [141.1131909, 39.2867646]
+  },
+  {
+    "name": "Imizu, Toyama",
+    "population": 94691,
+    "location": [137.0796145, 36.7824552]
+  },
+  {
+    "name": "Takasago, Hyōgo",
+    "population": 94198,
+    "location": [134.7904417, 34.7662013]
+  },
+  {
+    "name": "Chitose, Hokkaidō",
+    "population": 94124,
+    "location": [141.650876, 42.8209577]
+  },
+  {
+    "name": "Ōnojō, Fukuoka",
+    "population": 94037,
+    "location": [130.478641, 33.536307]
+  },
+  {
+    "name": "Kōka, Shiga",
+    "population": 94007,
+    "location": [136.167092, 34.9661392]
+  },
+  {
+    "name": "Kameoka, Kyoto",
+    "population": 93641,
+    "location": [135.5736091, 35.0134082]
+  },
+  {
+    "name": "Kamisu, Ibaraki",
+    "population": 93538,
+    "location": [140.6645134, 35.889966]
+  },
+  {
+    "name": "Kashiwazaki, Niigata",
+    "population": 93506,
+    "location": [138.5589836, 37.3718999]
+  },
+  {
+    "name": "Muroran, Hokkaidō",
+    "population": 93078,
+    "location": [140.9737991, 42.3152306]
+  },
+  {
+    "name": "Amakusa, Kumamoto",
+    "population": 93047,
+    "location": [130.1929825, 32.4586347]
+  },
+  {
+    "name": "Mobara, Chiba",
+    "population": 93032,
+    "location": [140.2880265, 35.4285439]
+  },
+  {
+    "name": "Seki, Gifu",
+    "population": 92896,
+    "location": [136.9178419, 35.495738]
+  },
+  {
+    "name": "Ashiya, Hyōgo",
+    "population": 92828,
+    "location": [135.3041623, 34.7269496]
+  },
+  {
+    "name": "Sakai, Fukui",
+    "population": 92420,
+    "location": [136.2314572, 36.1669252]
+  },
+  {
+    "name": "Nikkō, Tochigi",
+    "population": 92181,
+    "location": [139.6982161, 36.7199026]
+  },
+  {
+    "name": "Yonezawa, Yamagata",
+    "population": 91704,
+    "location": [140.1167811, 37.9222401]
+  },
+  {
+    "name": "Shikokuchūō, Ehime",
+    "population": 91688,
+    "location": [133.5491949, 33.9807605]
+  },
+  {
+    "name": "Ginowan, Okinawa",
+    "population": 91233,
+    "location": [127.7786343, 26.2815751]
+  },
+  {
+    "name": "Daisen, Akita",
+    "population": 91143,
+    "location": [140.4754481, 39.4530882]
+  },
+  {
+    "name": "Higashimatsuyama, Saitama",
+    "population": 90840,
+    "location": [139.3999588, 36.0421262]
+  },
+  {
+    "name": "Maizuru, Kyoto",
+    "population": 90461,
+    "location": [135.3859918, 35.4747971]
+  },
+  {
+    "name": "Kaizuka, Osaka",
+    "population": 90447,
+    "location": [135.358517, 34.4375837]
+  },
+  {
+    "name": "Yamatokōriyama, Nara",
+    "population": 90223,
+    "location": [135.7827554, 34.6493738]
+  },
+  {
+    "name": "Ōmura, Nagasaki",
+    "population": 89650,
+    "location": [129.9581416, 32.9000901]
+  },
+  {
+    "name": "Kimitsu, Chiba",
+    "population": 89350,
+    "location": [139.9026768, 35.3304502]
+  },
+  {
+    "name": "Iwamizawa, Hokkaidō",
+    "population": 89023,
+    "location": [141.7759331, 43.1962055]
+  },
+  {
+    "name": "Gotenba, Shizuoka",
+    "population": 88078,
+    "location": [138.9345062, 35.3085842]
+  },
+  {
+    "name": "Toyooka, Hyōgo",
+    "population": 87555,
+    "location": [134.8201842, 35.5444727]
+  },
+  {
+    "name": "Yurihonjō, Akita",
+    "population": 87525,
+    "location": [140.0487906, 39.3858766]
+  },
+  {
+    "name": "Gyōda, Saitama",
+    "population": 87462,
+    "location": [139.4556427, 36.1389486]
+  },
+  {
+    "name": "Echizen, Fukui",
+    "population": 87116,
+    "location": [136.16878, 35.9034986]
+  },
+  {
+    "name": "Tome, Miyagi",
+    "population": 86940,
+    "location": [141.1875786, 38.6919226]
+  },
+  {
+    "name": "Uwajima, Ehime",
+    "population": 86819,
+    "location": [132.5605575, 33.2233404]
+  },
+  {
+    "name": "Shibukawa, Gunma",
+    "population": 86134,
+    "location": [139.0004482, 36.4894706]
+  },
+  {
+    "name": "Yotsukaidō, Chiba",
+    "population": 85738,
+    "location": [140.1679247, 35.6698162]
+  },
+  {
+    "name": "Katori, Chiba",
+    "population": 85193,
+    "location": [140.4992682, 35.89773539999999]
+  },
+  {
+    "name": "Fukuroi, Shizuoka",
+    "population": 85163,
+    "location": [137.9246792, 34.7501735]
+  },
+  {
+    "name": "Chita, Aichi",
+    "population": 84782,
+    "location": [136.8647553, 34.9965332]
+  },
+  {
+    "name": "Settsu, Osaka",
+    "population": 84330,
+    "location": [135.5618168, 34.7773564]
+  },
+  {
+    "name": "Nakatsu, Ōita",
+    "population": 84179,
+    "location": [131.1883247, 33.5982211]
+  },
+  {
+    "name": "Hannō, Saitama",
+    "population": 84053,
+    "location": [139.327734, 35.8557309]
+  },
+  {
+    "name": "Nagahama, Shiga",
+    "population": 83555,
+    "location": [136.2754832, 35.3814922]
+  },
+  {
+    "name": "Miki, Hyōgo",
+    "population": 83244,
+    "location": [134.9901968, 34.7969439]
+  },
+  {
+    "name": "Nakatsugawa, Gifu",
+    "population": 83116,
+    "location": [137.5005092, 35.4875479]
+  },
+  {
+    "name": "Ōbu, Aichi",
+    "population": 83097,
+    "location": [136.9638347, 35.01165659999999]
+  },
+  {
+    "name": "Tsubame, Niigata",
+    "population": 82910,
+    "location": [138.8822296, 37.6731518]
+  },
+  {
+    "name": "Gamagōri, Aichi",
+    "population": 82264,
+    "location": [137.2195158, 34.8265004]
+  },
+  {
+    "name": "Ayase, Kanagawa",
+    "population": 82083,
+    "location": [139.4261482, 35.4371752]
+  },
+  {
+    "name": "Honjō, Saitama",
+    "population": 81805,
+    "location": [139.190393, 36.2435676]
+  },
+  {
+    "name": "Tochigi, Tochigi",
+    "population": 81601,
+    "location": [139.7303175, 36.3813638]
+  },
+  {
+    "name": "Higashiyamato, Tokyo",
+    "population": 81445,
+    "location": [139.4265933, 35.7453692]
+  },
+  {
+    "name": "Nabari, Mie",
+    "population": 81184,
+    "location": [136.1082959, 34.6276593]
+  },
+  {
+    "name": "Tatsuno, Hyōgo",
+    "population": 80988,
+    "location": [134.5453598, 34.8578626]
+  },
+  {
+    "name": "Nisshin, Aichi",
+    "population": 80921,
+    "location": [137.0394117, 35.1320154]
+  },
+  {
+    "name": "Fukuchiyama, Kyoto",
+    "population": 80836,
+    "location": [135.1265628, 35.2967]
+  },
+  {
+    "name": "Jōyō, Kyoto",
+    "population": 80795,
+    "location": [135.7799739, 34.8530082]
+  },
+  {
+    "name": "Inagi, Tokyo",
+    "population": 80772,
+    "location": [139.5045669, 35.6379238]
+  },
+  {
+    "name": "Kasama, Ibaraki",
+    "population": 80646,
+    "location": [140.3043542, 36.3453]
+  },
+  {
+    "name": "Ōdate, Akita",
+    "population": 80587,
+    "location": [140.5642854, 40.271405]
+  },
+  {
+    "name": "Ishioka, Ibaraki",
+    "population": 80502,
+    "location": [140.2872532, 36.1908093]
+  },
+  {
+    "name": "Tanabe, Wakayama",
+    "population": 80478,
+    "location": [135.377768, 33.7280335]
+  },
+  {
+    "name": "Sukagawa, Fukushima",
+    "population": 80336,
+    "location": [140.3569753, 37.2928933]
+  },
+  {
+    "name": "Akiruno, Tokyo",
+    "population": 80268,
+    "location": [139.2941195, 35.7289201]
+  },
+  {
+    "name": "Kitanagoya, Aichi",
+    "population": 80112,
+    "location": [136.8660083, 35.2456681]
+  },
+  {
+    "name": "Ryūgasaki, Ibaraki",
+    "population": 79295,
+    "location": [140.1822645, 35.911594]
+  },
+  {
+    "name": "Ushiku, Ibaraki",
+    "population": 79254,
+    "location": [140.1495237, 35.9793751]
+  },
+  {
+    "name": "Owariasahi, Aichi",
+    "population": 79197,
+    "location": [137.0353957, 35.2165127]
+  },
+  {
+    "name": "Nagaokakyō, Kyoto",
+    "population": 79031,
+    "location": [135.6957852, 34.926771]
+  },
+  {
+    "name": "Tatebayashi, Gunma",
+    "population": 79023,
+    "location": [139.5419678, 36.2448485]
+  },
+  {
+    "name": "Saiki, Ōita",
+    "population": 78675,
+    "location": [131.8995326, 32.96021700000001]
+  },
+  {
+    "name": "Yashio, Saitama",
+    "population": 78601,
+    "location": [139.8391748, 35.822536]
+  },
+  {
+    "name": "Wakō, Saitama",
+    "population": 78575,
+    "location": [139.6057934, 35.7812079]
+  },
+  {
+    "name": "Ōtawara, Tochigi",
+    "population": 78563,
+    "location": [140.0174187, 36.871484]
+  },
+  {
+    "name": "Komae, Tokyo",
+    "population": 78237,
+    "location": [139.5787325, 35.6349115]
+  },
+  {
+    "name": "Izumiōtsu, Osaka",
+    "population": 78014,
+    "location": [135.4104641, 34.5042794]
+  },
+  {
+    "name": "Kurihara, Miyagi",
+    "population": 77862,
+    "location": [141.0213331, 38.7301283]
+  },
+  {
+    "name": "Katano, Osaka",
+    "population": 77853,
+    "location": [135.6799533, 34.7879438]
+  },
+  {
+    "name": "Anan, Tokushima",
+    "population": 77099,
+    "location": [134.6594685, 33.9217479]
+  },
+  {
+    "name": "Kashiwara, Osaka",
+    "population": 75875,
+    "location": [135.6286422, 34.5793052]
+  },
+  {
+    "name": "Yachimata, Chiba",
+    "population": 75369,
+    "location": [140.3179516, 35.665917]
+  },
+  {
+    "name": "Inuyama, Aichi",
+    "population": 75304,
+    "location": [136.9445638, 35.3786067]
+  },
+  {
+    "name": "Okegawa, Saitama",
+    "population": 74703,
+    "location": [139.5582663, 36.0029939]
+  },
+  {
+    "name": "Moriyama, Shiga",
+    "population": 74263,
+    "location": [135.9944042, 35.0589401]
+  },
+  {
+    "name": "Kai, Yamanashi",
+    "population": 74077,
+    "location": [138.4872571, 35.686259]
+  },
+  {
+    "name": "Yawata, Kyoto",
+    "population": 73822,
+    "location": [135.7076209, 34.8755551]
+  },
+  {
+    "name": "Kaga, Ishikawa",
+    "population": 73745,
+    "location": [136.3146271, 36.3026243]
+  },
+  {
+    "name": "Kiyose, Tokyo",
+    "population": 73518,
+    "location": [139.5264304, 35.7857526]
+  },
+  {
+    "name": "Kunitachi, Tokyo",
+    "population": 73362,
+    "location": [139.4413803, 35.6838846]
+  },
+  {
+    "name": "Hekinan, Aichi",
+    "population": 73024,
+    "location": [136.9933755, 34.8848038]
+  },
+  {
+    "name": "Kashiba, Nara",
+    "population": 72967,
+    "location": [135.6989368, 34.5412561]
+  },
+  {
+    "name": "Yanagawa, Fukuoka",
+    "population": 72798,
+    "location": [130.4057531, 33.1630889]
+  },
+  {
+    "name": "Hita, Ōita",
+    "population": 72601,
+    "location": [130.9409659, 33.3213327]
+  },
+  {
+    "name": "Chōshi, Chiba",
+    "population": 72348,
+    "location": [140.8266406, 35.7346813]
+  },
+  {
+    "name": "Minami-Alps, Yamanashi",
+    "population": 72295,
+    "location": [138.464966, 35.6083275]
+  },
+  {
+    "name": "Itō, Shizuoka",
+    "population": 72038,
+    "location": [139.1019363, 34.9656705]
+  },
+  {
+    "name": "Ina, Nagano",
+    "population": 71937,
+    "location": [137.9540801, 35.827481]
+  },
+  {
+    "name": "Minamisōma, Fukushima",
+    "population": 71761,
+    "location": [140.9572757, 37.6421608]
+  },
+  {
+    "name": "Kuki, Saitama",
+    "population": 71667,
+    "location": [139.666838, 36.0619954]
+  },
+  {
+    "name": "Fuefuki, Yamanashi",
+    "population": 71184,
+    "location": [138.6397857, 35.6473601]
+  },
+  {
+    "name": "Tamana, Kumamoto",
+    "population": 70747,
+    "location": [130.5595011, 32.9282567]
+  },
+  {
+    "name": "Tenri, Nara",
+    "population": 70702,
+    "location": [135.8373313, 34.596647]
+  },
+  {
+    "name": "Warabi, Saitama",
+    "population": 70410,
+    "location": [139.679708, 35.825634]
+  },
+  {
+    "name": "Tsurugashima, Saitama",
+    "population": 70131,
+    "location": [139.3930979, 35.934515]
+  },
+  {
+    "name": "Yukuhashi, Fukuoka",
+    "population": 70064,
+    "location": [130.982967, 33.7287727]
+  },
+  {
+    "name": "Mitoyo, Kagawa",
+    "population": 69997,
+    "location": [133.7152193, 34.1825473]
+  },
+  {
+    "name": "Asahi, Chiba",
+    "population": 69971,
+    "location": [140.6464692, 35.7204338]
+  },
+  {
+    "name": "Kitamoto, Saitama",
+    "population": 69903,
+    "location": [139.5302556, 36.0270179]
+  },
+  {
+    "name": "Natori, Miyagi",
+    "population": 69610,
+    "location": [140.8919132, 38.1715199]
+  },
+  {
+    "name": "Yamatotakada, Nara",
+    "population": 69473,
+    "location": [135.736392, 34.5150463]
+  },
+  {
+    "name": "Tamba, Hyōgo",
+    "population": 69233,
+    "location": [135.0358536, 35.1771001]
+  },
+  {
+    "name": "Chichibu, Saitama",
+    "population": 69139,
+    "location": [139.0854279, 35.9917524]
+  },
+  {
+    "name": "Toyoake, Aichi",
+    "population": 69124,
+    "location": [137.0129968, 35.0536877]
+  },
+  {
+    "name": "Ōmihachiman, Shiga",
+    "population": 69116,
+    "location": [136.0979067, 35.1283386]
+  },
+  {
+    "name": "Eniwa, Hokkaidō",
+    "population": 68754,
+    "location": [141.5778154, 42.8825618]
+  },
+  {
+    "name": "Fujioka, Gunma",
+    "population": 68710,
+    "location": [139.0744386, 36.2584765]
+  },
+  {
+    "name": "Dazaifu, Fukuoka",
+    "population": 68561,
+    "location": [130.5239064, 33.5127991]
+  },
+  {
+    "name": "Shiki, Saitama",
+    "population": 68531,
+    "location": [139.5803194, 35.8367501]
+  },
+  {
+    "name": "Musashimurayama, Tokyo",
+    "population": 68333,
+    "location": [139.3873993, 35.7548614]
+  },
+  {
+    "name": "Chiryū, Aichi",
+    "population": 68216,
+    "location": [137.0507493, 35.0012715]
+  },
+  {
+    "name": "Tsuruga, Fukui",
+    "population": 68188,
+    "location": [136.0554408, 35.6452443]
+  },
+  {
+    "name": "Kazo, Saitama",
+    "population": 67862,
+    "location": [139.6017194, 36.1314381]
+  },
+  {
+    "name": "Shiojiri, Nagano",
+    "population": 67781,
+    "location": [137.953449, 36.1149723]
+  },
+  {
+    "name": "Hashimoto, Wakayama",
+    "population": 67505,
+    "location": [135.6052962, 34.3150526]
+  },
+  {
+    "name": "Date, Fukushima",
+    "population": 67487,
+    "location": [140.5629082, 37.8191383]
+  },
+  {
+    "name": "Sabae, Fukui",
+    "population": 67430,
+    "location": [136.1844742, 35.9565532]
+  },
+  {
+    "name": "Kinokawa, Wakayama",
+    "population": 67192,
+    "location": [135.3627568, 34.2698603]
+  },
+  {
+    "name": "Hashima, Gifu",
+    "population": 67167,
+    "location": [136.7033494, 35.31991]
+  },
+  {
+    "name": "Tosu, Saga",
+    "population": 66842,
+    "location": [130.506258, 33.3777547]
+  },
+  {
+    "name": "Towada, Aomori",
+    "population": 66834,
+    "location": [141.2059076, 40.612703]
+  },
+  {
+    "name": "Sōja, Okayama",
+    "population": 66789,
+    "location": [133.7465284, 34.6728073]
+  },
+  {
+    "name": "Kizugawa, Kyoto",
+    "population": 66783,
+    "location": [135.8201167, 34.7371622]
+  },
+  {
+    "name": "Mooka, Tochigi",
+    "population": 66705,
+    "location": [140.0134416, 36.4404189]
+  },
+  {
+    "name": "Tahara, Aichi",
+    "population": 66698,
+    "location": [137.2642033, 34.6688056]
+  },
+  {
+    "name": "Fujiidera, Osaka",
+    "population": 65892,
+    "location": [135.5974737, 34.5742772]
+  },
+  {
+    "name": "Jōsō, Ibaraki",
+    "population": 65858,
+    "location": [139.9943002, 36.0234353]
+  },
+  {
+    "name": "Tamano, Okayama",
+    "population": 65723,
+    "location": [133.945987, 34.4919434]
+  },
+  {
+    "name": "Shirakawa, Fukushima",
+    "population": 65665,
+    "location": [140.2109427, 37.126362]
+  },
+  {
+    "name": "Tsushima, Aichi",
+    "population": 65646,
+    "location": [136.7412138, 35.1770291]
+  },
+  {
+    "name": "San'yō-Onoda, Yamaguchi",
+    "population": 65523,
+    "location": [131.1819669, 34.0030636]
+  },
+  {
+    "name": "Aisai, Aichi",
+    "population": 65481,
+    "location": [136.7282551, 35.1527851]
+  },
+  {
+    "name": "Kyōtanabe, Kyoto",
+    "population": 65211,
+    "location": [135.7676947, 34.8144589]
+  },
+  {
+    "name": "Kashima, Ibaraki",
+    "population": 65193,
+    "location": [140.6448128, 35.9657558]
+  },
+  {
+    "name": "Sado, Niigata",
+    "population": 65037,
+    "location": [138.368082, 38.0183525]
+  },
+  {
+    "name": "Sennan, Osaka",
+    "population": 64916,
+    "location": [135.2733393, 34.3660047]
+  },
+  {
+    "name": "Kesennuma, Miyagi",
+    "population": 64578,
+    "location": [141.5699919, 38.90807849999999]
+  },
+  {
+    "name": "Kan'onji, Kagawa",
+    "population": 64020,
+    "location": [133.6615172, 34.1274358]
+  },
+  {
+    "name": "Tendō, Yamagata",
+    "population": 63470,
+    "location": [140.3778858, 38.3622648]
+  },
+  {
+    "name": "Hasuda, Saitama",
+    "population": 63375,
+    "location": [139.6621058, 35.9943071]
+  },
+  {
+    "name": "Chikuma, Nagano",
+    "population": 63305,
+    "location": [138.1201078, 36.5338965]
+  },
+  {
+    "name": "Tagajō, Miyagi",
+    "population": 63200,
+    "location": [141.0042249, 38.2938392]
+  },
+  {
+    "name": "Hyūga, Miyazaki",
+    "population": 63066,
+    "location": [131.6239652, 32.4229442]
+  },
+  {
+    "name": "Yoshikawa, Saitama",
+    "population": 63050,
+    "location": [139.841375, 35.8911519]
+  },
+  {
+    "name": "Uki, Kumamoto",
+    "population": 62718,
+    "location": [130.6843654, 32.647847]
+  },
+  {
+    "name": "Minamiuonuma, Niigata",
+    "population": 62518,
+    "location": [138.9254479, 37.1614277]
+  },
+  {
+    "name": "Naruto, Tokushima",
+    "population": 62453,
+    "location": [134.6087858, 34.1725623]
+  },
+  {
+    "name": "Rittō, Shiga",
+    "population": 62353,
+    "location": [135.9979959, 35.0216168]
+  },
+  {
+    "name": "Annaka, Gunma",
+    "population": 62270,
+    "location": [138.8873239, 36.3263676]
+  },
+  {
+    "name": "Mutsu, Aomori",
+    "population": 62220,
+    "location": [141.1834755, 41.2927457]
+  },
+  {
+    "name": "Nihonmatsu, Fukushima",
+    "population": 61698,
+    "location": [140.4311291, 37.5848581]
+  },
+  {
+    "name": "Tōgane, Chiba",
+    "population": 61591,
+    "location": [140.3660922, 35.5599438]
+  },
+  {
+    "name": "Toki, Gifu",
+    "population": 61393,
+    "location": [137.183202, 35.3525002]
+  },
+  {
+    "name": "Hamada, Shimane",
+    "population": 61325,
+    "location": [132.0797833, 34.8993025]
+  },
+  {
+    "name": "Noshiro, Akita",
+    "population": 61295,
+    "location": [140.0266238, 40.2121508]
+  },
+  {
+    "name": "Kyōtango, Kyoto",
+    "population": 60980,
+    "location": [135.0610001, 35.6241658]
+  },
+  {
+    "name": "Goshogawara, Aomori",
+    "population": 60788,
+    "location": [140.44009, 40.80800199999999]
+  },
+  {
+    "name": "Sakurai, Nara",
+    "population": 60699,
+    "location": [135.8432157, 34.5187142]
+  },
+  {
+    "name": "Ishikari, Hokkaidō",
+    "population": 60616,
+    "location": [141.3155196, 43.1713843]
+  },
+  {
+    "name": "Nago, Okinawa",
+    "population": 60598,
+    "location": [127.9773162, 26.5915465]
+  },
+  {
+    "name": "Tōkamachi, Niigata",
+    "population": 60480,
+    "location": [138.7557076, 37.1275822]
+  },
+  {
+    "name": "Fussa, Tokyo",
+    "population": 60413,
+    "location": [139.3269322, 35.7384505]
+  },
+  {
+    "name": "Kitahiroshima, Hokkaidō",
+    "population": 60291,
+    "location": [141.5635426, 42.9856296]
+  },
+  {
+    "name": "Inzai, Chiba",
+    "population": 60280,
+    "location": [140.1458154, 35.83234849999999]
+  },
+  {
+    "name": "Nanao, Ishikawa",
+    "population": 60140,
+    "location": [136.9675177, 37.043102]
+  },
+  {
+    "name": "Takaishi, Osaka",
+    "population": 60077,
+    "location": [135.4424524, 34.5207172]
+  },
+  {
+    "name": "Usa, Ōita",
+    "population": 59971,
+    "location": [131.3495446, 33.53197189999999]
+  },
+  {
+    "name": "Shimotsuke, Tochigi",
+    "population": 59459,
+    "location": [139.8419671, 36.38719469999999]
+  },
+  {
+    "name": "Sodegaura, Chiba",
+    "population": 59443,
+    "location": [139.9544301, 35.4298081]
+  },
+  {
+    "name": "Ōsakasayama, Osaka",
+    "population": 58661,
+    "location": [135.5556927, 34.5037954]
+  },
+  {
+    "name": "Zushi, Kanagawa",
+    "population": 58654,
+    "location": [139.5804228, 35.2956059]
+  },
+  {
+    "name": "Hitachiōta, Ibaraki",
+    "population": 58461,
+    "location": [140.5309497, 36.5382746]
+  },
+  {
+    "name": "Ogōri, Fukuoka",
+    "population": 58460,
+    "location": [130.5554383, 33.3964164]
+  },
+  {
+    "name": "Miyako, Iwate",
+    "population": 58342,
+    "location": [141.9571395, 39.6414202]
+  },
+  {
+    "name": "Miyoshi, Hiroshima",
+    "population": 58264,
+    "location": [132.8518406, 34.8056516]
+  },
+  {
+    "name": "Shiogama, Miyagi",
+    "population": 58057,
+    "location": [141.0220272, 38.3143623]
+  },
+  {
+    "name": "Asakura, Fukuoka",
+    "population": 57881,
+    "location": [130.665573, 33.4234125]
+  },
+  {
+    "name": "Sanmu, Chiba",
+    "population": 57806,
+    "location": [140.4135064, 35.6029638]
+  },
+  {
+    "name": "Moriya, Ibaraki",
+    "population": 57793,
+    "location": [139.9753912, 35.9514207]
+  },
+  {
+    "name": "Imari, Saga",
+    "population": 57604,
+    "location": [129.880269, 33.2645856]
+  },
+  {
+    "name": "Chino, Nagano",
+    "population": 57363,
+    "location": [138.158893, 35.9955706]
+  },
+  {
+    "name": "Nōgata, Fukuoka",
+    "population": 57319,
+    "location": [130.7296326, 33.7441839]
+  },
+  {
+    "name": "Shijōnawate, Osaka",
+    "population": 57239,
+    "location": [135.6395329, 34.7399405]
+  },
+  {
+    "name": "Shiroi, Chiba",
+    "population": 57151,
+    "location": [140.0563717, 35.7914999]
+  },
+  {
+    "name": "Bandō, Ibaraki",
+    "population": 57128,
+    "location": [139.888687, 36.0483995]
+  },
+  {
+    "name": "Koga, Fukuoka",
+    "population": 57084,
+    "location": [130.4699872, 33.7287865]
+  },
+  {
+    "name": "Nanto, Toyama",
+    "population": 57061,
+    "location": [136.8753356, 36.5575131]
+  },
+  {
+    "name": "Hamura, Tokyo",
+    "population": 56984,
+    "location": [139.3109437, 35.7672215]
+  },
+  {
+    "name": "Hannan, Osaka",
+    "population": 56853,
+    "location": [135.2396697, 34.3595827]
+  },
+  {
+    "name": "Izumi, Kagoshima",
+    "population": 56851,
+    "location": [130.3527529, 32.090572]
+  },
+  {
+    "name": "Hanyū, Saitama",
+    "population": 56820,
+    "location": [139.5484646, 36.1726261]
+  },
+  {
+    "name": "Shima, Mie",
+    "population": 56758,
+    "location": [136.8296906, 34.3281595]
+  },
+  {
+    "name": "Yamaga, Kumamoto",
+    "population": 56741,
+    "location": [130.6912507, 33.0166917]
+  },
+  {
+    "name": "Kiyosu, Aichi",
+    "population": 56635,
+    "location": [136.8655213, 35.2033806]
+  },
+  {
+    "name": "Sakaide, Kagawa",
+    "population": 56501,
+    "location": [133.8605102, 34.3163193]
+  },
+  {
+    "name": "Itoman, Okinawa",
+    "population": 56171,
+    "location": [127.6658145, 26.1235841]
+  },
+  {
+    "name": "Kasaoka, Okayama",
+    "population": 55987,
+    "location": [133.5074409, 34.5071797]
+  },
+  {
+    "name": "Gosen, Niigata",
+    "population": 55936,
+    "location": [139.1825675, 37.7445357]
+  },
+  {
+    "name": "Kainan, Wakayama",
+    "population": 55877,
+    "location": [135.2092226, 34.1553356]
+  },
+  {
+    "name": "Hagi, Yamaguchi",
+    "population": 55831,
+    "location": [131.3990849, 34.4081155]
+  },
+  {
+    "name": "Arao, Kumamoto",
+    "population": 55505,
+    "location": [130.4329585, 32.9868355]
+  },
+  {
+    "name": "Hidaka, Saitama",
+    "population": 55454,
+    "location": [139.3390264, 35.9077959]
+  },
+  {
+    "name": "Konan, Shiga",
+    "population": 55144,
+    "location": [136.0846787, 35.0041503]
+  },
+  {
+    "name": "Mukō, Kyoto",
+    "population": 55137,
+    "location": [135.698288, 34.9487356]
+  },
+  {
+    "name": "Fukutsu, Fukuoka",
+    "population": 55123,
+    "location": [130.4698859, 33.7868658]
+  },
+  {
+    "name": "Ena, Gifu",
+    "population": 54844,
+    "location": [137.4128083, 35.449314]
+  },
+  {
+    "name": "Sanuki, Kagawa",
+    "population": 54832,
+    "location": [134.1721196, 34.325207]
+  },
+  {
+    "name": "Kitakata, Fukushima",
+    "population": 54684,
+    "location": [139.8747227, 37.6511328]
+  },
+  {
+    "name": "Naka, Ibaraki",
+    "population": 54618,
+    "location": [140.486854, 36.4574688]
+  },
+  {
+    "name": "Tomigusuku, Okinawa",
+    "population": 54586,
+    "location": [127.668944, 26.1610061]
+  },
+  {
+    "name": "Kudamatsu, Yamaguchi",
+    "population": 54026,
+    "location": [131.8703421, 34.0150299]
+  },
+  {
+    "name": "Minokamo, Gifu",
+    "population": 53988,
+    "location": [137.0156644, 35.4402422]
+  },
+  {
+    "name": "Susono, Shizuoka",
+    "population": 53740,
+    "location": [138.9067292, 35.1738825]
+  },
+  {
+    "name": "Okaya, Nagano",
+    "population": 53722,
+    "location": [138.0493255, 36.0670115]
+  },
+  {
+    "name": "Yuzawa, Akita",
+    "population": 53588,
+    "location": [140.4947797, 39.1640707]
+  },
+  {
+    "name": "Kōshi, Kumamoto",
+    "population": 53490,
+    "location": [130.789707, 32.8859878]
+  },
+  {
+    "name": "Satte, Saitama",
+    "population": 53485,
+    "location": [139.7258607, 36.0780722]
+  },
+  {
+    "name": "Tomioka, Gunma",
+    "population": 53332,
+    "location": [138.8899322, 36.2598962]
+  },
+  {
+    "name": "Himi, Toyama",
+    "population": 53316,
+    "location": [136.9865392, 36.8573397]
+  },
+  {
+    "name": "Hikari, Yamaguchi",
+    "population": 53274,
+    "location": [131.9422817, 33.9619132]
+  },
+  {
+    "name": "Suzaka, Nagano",
+    "population": 53097,
+    "location": [138.3071917, 36.6510973]
+  },
+  {
+    "name": "Takashima, Shiga",
+    "population": 52967,
+    "location": [136.0358297, 35.3530713]
+  },
+  {
+    "name": "Tokoname, Aichi",
+    "population": 52837,
+    "location": [136.8323973, 34.8867002]
+  },
+  {
+    "name": "Omitama, Ibaraki",
+    "population": 52834,
+    "location": [140.3525755, 36.2393446]
+  },
+  {
+    "name": "Miyakojima, Okinawa",
+    "population": 52777,
+    "location": [125.2811486, 24.80549]
+  },
+  {
+    "name": "Suwa, Nagano",
+    "population": 52671,
+    "location": [138.1141816, 36.0391417]
+  },
+  {
+    "name": "Minamishimabara, Nagasaki",
+    "population": 52347,
+    "location": [130.2978639, 32.6597769]
+  },
+  {
+    "name": "Numata, Gunma",
+    "population": 52319,
+    "location": [139.0441608, 36.6460769]
+  },
+  {
+    "name": "Yūki, Ibaraki",
+    "population": 52065,
+    "location": [139.8766414, 36.3054165]
+  },
+  {
+    "name": "Midori, Gunma",
+    "population": 51964,
+    "location": [139.2811346, 36.3948381]
+  },
+  {
+    "name": "Fujiyoshida, Yamanashi",
+    "population": 51879,
+    "location": [138.8078541, 35.4874967]
+  },
+  {
+    "name": "Iwade, Wakayama",
+    "population": 51843,
+    "location": [135.3113232, 34.2562947]
+  },
+  {
+    "name": "Tomisato, Chiba",
+    "population": 51590,
+    "location": [140.3430579, 35.7268082]
+  },
+  {
+    "name": "Noboribetsu, Hokkaidō",
+    "population": 51474,
+    "location": [141.1066316, 42.4127597]
+  },
+  {
+    "name": "Hioki, Kagoshima",
+    "population": 51472,
+    "location": [130.4024246, 31.6337085]
+  },
+  {
+    "name": "Kikuchi, Kumamoto",
+    "population": 51471,
+    "location": [130.8133329, 32.9794831]
+  },
+  {
+    "name": "Kurayoshi, Tottori",
+    "population": 51453,
+    "location": [133.825561, 35.4301794]
+  },
+  {
+    "name": "Shinshiro, Aichi",
+    "population": 51326,
+    "location": [137.4984758, 34.8992291]
+  },
+  {
+    "name": "Akō, Hyōgo",
+    "population": 51277,
+    "location": [134.3902842, 34.7549564]
+  },
+  {
+    "name": "Mizuho, Gifu",
+    "population": 51230,
+    "location": [136.6497738, 35.4040939]
+  },
+  {
+    "name": "Minamiawaji, Hyōgo",
+    "population": 51069,
+    "location": [134.779125, 34.2957739]
+  },
+  {
+    "name": "Masuda, Shimane",
+    "population": 50980,
+    "location": [131.842862, 34.6748172]
+  },
+  {
+    "name": "Hokota, Ibaraki",
+    "population": 50869,
+    "location": [140.5164611, 36.15864]
+  },
+  {
+    "name": "Takeo, Saga",
+    "population": 50788,
+    "location": [130.0191505, 33.1937487]
+  },
+  {
+    "name": "Tagawa, Fukuoka",
+    "population": 50484,
+    "location": [130.8062975, 33.6389822]
+  },
+  {
+    "name": "Maniwa, Okayama",
+    "population": 50405,
+    "location": [133.75273, 35.0756019]
+  },
+  {
+    "name": "Nankoku, Kōchi",
+    "population": 50315,
+    "location": [133.6414597, 33.5756706]
+  },
+  {
+    "name": "Kameyama, Mie",
+    "population": 50304,
+    "location": [136.4516451, 34.8557554]
+  },
+  {
+    "name": "Tateyama, Chiba",
+    "population": 49987,
+    "location": [139.8699653, 34.9965057]
+  },
+  {
+    "name": "Yasu, Shiga",
+    "population": 49821,
+    "location": [136.0258504, 35.0674538]
+  },
+  {
+    "name": "Makinohara, Shizuoka",
+    "population": 49726,
+    "location": [138.2246522, 34.7400427]
+  },
+  {
+    "name": "Izunokuni, Shizuoka",
+    "population": 49711,
+    "location": [138.9289209, 35.0277354]
+  },
+  {
+    "name": "Ono, Hyōgo",
+    "population": 49664,
+    "location": [134.9313762, 34.853193]
+  },
+  {
+    "name": "Ōzu, Ehime",
+    "population": 49543,
+    "location": [132.5445085, 33.5061936]
+  },
+  {
+    "name": "Tonami, Toyama",
+    "population": 49396,
+    "location": [136.9620085, 36.6475336]
+  },
+  {
+    "name": "Miura, Kanagawa",
+    "population": 49371,
+    "location": [139.6207704, 35.1441706]
+  },
+  {
+    "name": "Futtsu, Chiba",
+    "population": 48973,
+    "location": [139.8571048, 35.3041204]
+  },
+  {
+    "name": "Shimabara, Nagasaki",
+    "population": 48953,
+    "location": [130.370286, 32.7881027]
+  },
+  {
+    "name": "Hokuto, Hokkaidō",
+    "population": 48779,
+    "location": [140.6529028, 41.8240597]
+  },
+  {
+    "name": "Unzen, Nagasaki",
+    "population": 48701,
+    "location": [130.1874996, 32.8351972]
+  },
+  {
+    "name": "Itoigawa, Niigata",
+    "population": 48653,
+    "location": [137.8626522, 37.0390282]
+  },
+  {
+    "name": "Sumoto, Hyōgo",
+    "population": 48631,
+    "location": [134.8956197, 34.3424262]
+  },
+  {
+    "name": "Kitaibaraki, Ibaraki",
+    "population": 48437,
+    "location": [140.7509791, 36.8019113]
+  },
+  {
+    "name": "Kasai, Hyōgo",
+    "population": 48435,
+    "location": [134.8416219, 34.9279363]
+  },
+  {
+    "name": "Chikugo, Fukuoka",
+    "population": 48281,
+    "location": [130.5020928, 33.2124469]
+  },
+  {
+    "name": "Inashiki, Ibaraki",
+    "population": 48125,
+    "location": [140.3239084, 35.9564924]
+  },
+  {
+    "name": "Amami, Kagoshima",
+    "population": 48116,
+    "location": [129.4937408, 28.3772482]
+  },
+  {
+    "name": "Nomi, Ishikawa",
+    "population": 48106,
+    "location": [136.5542417, 36.4469409]
+  },
+  {
+    "name": "Iwakura, Aichi",
+    "population": 48042,
+    "location": [136.8714306, 35.2795027]
+  },
+  {
+    "name": "Awaji, Hyōgo",
+    "population": 47849,
+    "location": [134.9150157, 34.4396987]
+  },
+  {
+    "name": "Hokuto, Yamanashi",
+    "population": 47754,
+    "location": [138.4237811, 35.7765303]
+  },
+  {
+    "name": "Kikugawa, Shizuoka",
+    "population": 47702,
+    "location": [138.0845816, 34.7577461]
+  },
+  {
+    "name": "Sakuragawa, Ibaraki",
+    "population": 47480,
+    "location": [140.0904332, 36.3272504]
+  },
+  {
+    "name": "Hitachiōmiya, Ibaraki",
+    "population": 46729,
+    "location": [140.41089, 36.5425766]
+  },
+  {
+    "name": "Inabe, Mie",
+    "population": 46676,
+    "location": [136.5614711, 35.1157006]
+  },
+  {
+    "name": "Ishigaki, Okinawa",
+    "population": 46489,
+    "location": [124.1555804, 24.3406606]
+  },
+  {
+    "name": "Gujō, Gifu",
+    "population": 46338,
+    "location": [136.9643543, 35.7485771]
+  },
+  {
+    "name": "Nakano, Nagano",
+    "population": 46295,
+    "location": [138.3694503, 36.742044]
+  },
+  {
+    "name": "Agano, Niigata",
+    "population": 46158,
+    "location": [139.2259831, 37.834501]
+  },
+  {
+    "name": "Higashine, Yamagata",
+    "population": 46141,
+    "location": [140.3910903, 38.4313543]
+  },
+  {
+    "name": "Uozu, Toyama",
+    "population": 45945,
+    "location": [137.4092146, 36.8273674]
+  },
+  {
+    "name": "Shimotsuma, Ibaraki",
+    "population": 45918,
+    "location": [139.9673744, 36.1845136]
+  },
+  {
+    "name": "Nakama, Fukuoka",
+    "population": 45549,
+    "location": [130.7090769, 33.81664980000001]
+  },
+  {
+    "name": "Ogi, Saga",
+    "population": 45516,
+    "location": [130.2168637, 33.2736648]
+  },
+  {
+    "name": "Ibusuki, Kagoshima",
+    "population": 45455,
+    "location": [130.6330314, 31.2527702]
+  },
+  {
+    "name": "Komoro, Nagano",
+    "population": 45333,
+    "location": [138.4260135, 36.3268108]
+  },
+  {
+    "name": "Yoshinogawa, Tokushima",
+    "population": 44905,
+    "location": [134.2596249, 34.0307462]
+  },
+  {
+    "name": "Iwanuma, Miyagi",
+    "population": 44595,
+    "location": [140.8701381, 38.1042919]
+  },
+  {
+    "name": "Kosai, Shizuoka",
+    "population": 44545,
+    "location": [137.5316257, 34.71846550000001]
+  },
+  {
+    "name": "Kasumigaura, Ibaraki",
+    "population": 44450,
+    "location": [140.3306914, 36.09452890000001]
+  },
+  {
+    "name": "Kama, Fukuoka",
+    "population": 44431,
+    "location": [130.7668169, 33.560662]
+  },
+  {
+    "name": "Ibara, Okayama",
+    "population": 44423,
+    "location": [133.4636814, 34.5976718]
+  },
+  {
+    "name": "Sasayama, Hyōgo",
+    "population": 44345,
+    "location": [135.2190508, 35.0756607]
+  },
+  {
+    "name": "Minamiashigara, Kanagawa",
+    "population": 44285,
+    "location": [139.0996003, 35.32071450000001]
+  },
+  {
+    "name": "Fuchū, Hiroshima",
+    "population": 44212,
+    "location": [133.2363206, 34.56834670000001]
+  },
+  {
+    "name": "Chiyoda, Tokyo",
+    "population": 43802,
+    "location": [139.7535951, 35.6940027]
+  },
+  {
+    "name": "Akaiwa, Okayama",
+    "population": 43742,
+    "location": [134.0188399, 34.7553875]
+  },
+  {
+    "name": "Minamibōsō, Chiba",
+    "population": 43553,
+    "location": [139.8401276, 35.0429906]
+  },
+  {
+    "name": "Seiyo, Ehime",
+    "population": 43476,
+    "location": [132.5109925, 33.36262]
+  },
+  {
+    "name": "Takahama, Aichi",
+    "population": 43467,
+    "location": [136.9876769, 34.9276434]
+  },
+  {
+    "name": "Sagae, Yamagata",
+    "population": 43299,
+    "location": [140.2759667, 38.38096350000001]
+  },
+  {
+    "name": "Unnan, Shimane",
+    "population": 43269,
+    "location": [132.9005027, 35.2877894]
+  },
+  {
+    "name": "Nichinan, Miyazaki",
+    "population": 43264,
+    "location": [131.3787279, 31.6019319]
+  },
+  {
+    "name": "Higashimatsushima, Miyagi",
+    "population": 43238,
+    "location": [141.2102416, 38.4261675]
+  },
+  {
+    "name": "Yatomi, Aichi",
+    "population": 43145,
+    "location": [136.7247393, 35.1100184]
+  },
+  {
+    "name": "Nishiwaki, Hyōgo",
+    "population": 43126,
+    "location": [134.9691886, 34.9933552]
+  },
+  {
+    "name": "Yasugi, Shimane",
+    "population": 42997,
+    "location": [133.2509151, 35.4314422]
+  },
+  {
+    "name": "Takikawa, Hokkaidō",
+    "population": 42815,
+    "location": [141.9101895, 43.5577948]
+  },
+  {
+    "name": "Kurobe, Toyama",
+    "population": 42612,
+    "location": [137.4490245, 36.8736745]
+  },
+  {
+    "name": "Misawa, Aomori",
+    "population": 42535,
+    "location": [141.3689761, 40.6831337]
+  },
+  {
+    "name": "Usuki, Ōita",
+    "population": 42464,
+    "location": [131.8051243, 33.1260115]
+  },
+  {
+    "name": "Gotō, Nagasaki",
+    "population": 42447,
+    "location": [128.8408292, 32.6955241]
+  },
+  {
+    "name": "Sakura, Tochigi",
+    "population": 42403,
+    "location": [139.9664523, 36.6853014]
+  },
+  {
+    "name": "Uonuma, Niigata",
+    "population": 42334,
+    "location": [138.924361, 37.2441239]
+  },
+  {
+    "name": "Shisō, Hyōgo",
+    "population": 42302,
+    "location": [134.5494659, 35.004417]
+  },
+  {
+    "name": "Yame, Fukuoka",
+    "population": 42241,
+    "location": [130.5579082, 33.2119674]
+  },
+  {
+    "name": "Tamura, Fukushima",
+    "population": 42221,
+    "location": [140.5690784, 37.4413495]
+  },
+  {
+    "name": "Miyama, Fukuoka",
+    "population": 42219,
+    "location": [130.4747203, 33.1524253]
+  },
+  {
+    "name": "Mitsuke, Niigata",
+    "population": 42139,
+    "location": [138.9128247, 37.5316041]
+  },
+  {
+    "name": "Ōfunato, Iwate",
+    "population": 42119,
+    "location": [141.70853, 39.0819011]
+  },
+  {
+    "name": "Tsukubamirai, Ibaraki",
+    "population": 41957,
+    "location": [140.0370199, 35.9630239]
+  },
+  {
+    "name": "Shōbara, Hiroshima",
+    "population": 41747,
+    "location": [133.0172775, 34.8577316]
+  },
+  {
+    "name": "Isumi, Chiba",
+    "population": 41605,
+    "location": [140.3850506, 35.25388880000001]
+  },
+  {
+    "name": "Mizunami, Gifu",
+    "population": 41556,
+    "location": [137.2545866, 35.3617124]
+  },
+  {
+    "name": "Komatsushima, Tokushima",
+    "population": 41540,
+    "location": [134.5906739, 34.0047114]
+  },
+  {
+    "name": "Sōsa, Chiba",
+    "population": 41361,
+    "location": [140.5642812, 35.7079167]
+  },
+  {
+    "name": "Kamaishi, Iwate",
+    "population": 41348,
+    "location": [141.8856772, 39.2758183]
+  },
+  {
+    "name": "Soo, Kagoshima",
+    "population": 41179,
+    "location": [131.0193906, 31.65362099999999]
+  },
+  {
+    "name": "Minamikyūshū, Kagoshima",
+    "population": 40891,
+    "location": [130.4416449, 31.3782621]
+  },
+  {
+    "name": "Maibara, Shiga",
+    "population": 40757,
+    "location": [136.370192, 35.3615849]
+  },
+  {
+    "name": "Atami, Shizuoka",
+    "population": 40524,
+    "location": [139.0715325, 35.0959986]
+  },
+  {
+    "name": "Kobayashi, Miyazaki",
+    "population": 40514,
+    "location": [130.9725875, 31.9967312]
+  },
+  {
+    "name": "Bungo-ōno, Ōita",
+    "population": 40409,
+    "location": [131.5841334, 32.9775361]
+  },
+  {
+    "name": "Minamisatsuma, Kagoshima",
+    "population": 40386,
+    "location": [130.3234075, 31.4166121]
+  },
+  {
+    "name": "Awa, Tokushima",
+    "population": 40303,
+    "location": [134.2357787, 34.0823621]
+  },
+  {
+    "name": "Yawatahama, Ehime",
+    "population": 40010,
+    "location": [132.4233362, 33.4628979]
+  },
+  {
+    "name": "Katō, Hyōgo",
+    "population": 39935,
+    "location": [134.9732896, 34.9173483]
+  },
+  {
+    "name": "Nagato, Yamaguchi",
+    "population": 39825,
+    "location": [131.1821947, 34.3709562]
+  },
+  {
+    "name": "Shinjō, Yamagata",
+    "population": 39808,
+    "location": [140.3016084, 38.7650154]
+  },
+  {
+    "name": "Ōda, Shimane",
+    "population": 39593,
+    "location": [132.4992932, 35.1921063]
+  },
+  {
+    "name": "Nanjō, Okinawa",
+    "population": 39458,
+    "location": [127.7669666, 26.1444519]
+  },
+  {
+    "name": "Ojiya, Niigata",
+    "population": 39304,
+    "location": [138.7950996, 37.3143385]
+  },
+  {
+    "name": "Namegata, Ibaraki",
+    "population": 39117,
+    "location": [140.4890254, 35.9904155]
+  },
+  {
+    "name": "Bizen, Okayama",
+    "population": 39117,
+    "location": [134.1880436, 34.7451595]
+  },
+  {
+    "name": "Tsugaru, Aomori",
+    "population": 38919,
+    "location": [140.3800593, 40.808639]
+  },
+  {
+    "name": "Iyo, Ehime",
+    "population": 38890,
+    "location": [132.7037292, 33.7574293]
+  },
+  {
+    "name": "Setouchi, Okayama",
+    "population": 38645,
+    "location": [134.0928459, 34.6648872]
+  },
+  {
+    "name": "Shiroishi, Miyagi",
+    "population": 38629,
+    "location": [140.6198605, 38.0024779]
+  },
+  {
+    "name": "Abashiri, Hokkaidō",
+    "population": 38548,
+    "location": [144.2733983, 44.0206319]
+  },
+  {
+    "name": "Kitaakita, Akita",
+    "population": 38543,
+    "location": [140.3707417, 40.2260542]
+  },
+  {
+    "name": "Sōma, Fukushima",
+    "population": 38543,
+    "location": [140.9194697, 37.7966242]
+  },
+  {
+    "name": "Kaizu, Gifu",
+    "population": 38532,
+    "location": [136.6366621, 35.2204924]
+  },
+  {
+    "name": "Ōkawa, Fukuoka",
+    "population": 38266,
+    "location": [130.3839576, 33.2065943]
+  },
+  {
+    "name": "Yamanashi, Yamanashi",
+    "population": 38202,
+    "location": [138.6869138, 35.6933937]
+  },
+  {
+    "name": "Wakkanai, Hokkaidō",
+    "population": 37911,
+    "location": [141.6730822, 45.4156641]
+  },
+  {
+    "name": "Uto, Kumamoto",
+    "population": 37897,
+    "location": [130.6585213, 32.6873847]
+  },
+  {
+    "name": "Kuji, Iwate",
+    "population": 37824,
+    "location": [141.7755826, 40.1905242]
+  },
+  {
+    "name": "Kuroishi, Aomori",
+    "population": 37585,
+    "location": [140.5946454, 40.6426318]
+  },
+  {
+    "name": "Takahashi, Okayama",
+    "population": 37573,
+    "location": [133.6164881, 34.7912976]
+  },
+  {
+    "name": "Gero, Gifu",
+    "population": 37455,
+    "location": [137.2441002, 35.8058817]
+  },
+  {
+    "name": "Shimanto, Kōchi",
+    "population": 37182,
+    "location": [132.9337494, 32.9913841]
+  },
+  {
+    "name": "Asakuchi, Okayama",
+    "population": 37108,
+    "location": [133.5849216, 34.5278392]
+  },
+  {
+    "name": "Ayabe, Kyoto",
+    "population": 37081,
+    "location": [135.258812, 35.2989163]
+  },
+  {
+    "name": "Myōkō, Niigata",
+    "population": 36837,
+    "location": [138.2534728, 37.0251963]
+  },
+  {
+    "name": "Hirado, Nagasaki",
+    "population": 36785,
+    "location": [129.5536713, 33.3680618]
+  },
+  {
+    "name": "Ōno, Fukui",
+    "population": 36763,
+    "location": [136.4876804, 35.980764]
+  },
+  {
+    "name": "Hitoyoshi, Kumamoto",
+    "population": 36556,
+    "location": [130.7625544, 32.2100405]
+  },
+  {
+    "name": "Date, Hokkaidō",
+    "population": 36461,
+    "location": [140.8646786, 42.4718507]
+  },
+  {
+    "name": "Tsushima, Nagasaki",
+    "population": 36347,
+    "location": [129.2874904, 34.2026624]
+  },
+  {
+    "name": "Gojō, Nara",
+    "population": 36002,
+    "location": [135.6936323, 34.3520304]
+  },
+  {
+    "name": "Nantan, Kyoto",
+    "population": 35937,
+    "location": [135.4702596, 35.1073741]
+  },
+  {
+    "name": "Izu, Shizuoka",
+    "population": 35911,
+    "location": [138.946704, 34.9765857]
+  },
+  {
+    "name": "Sakaiminato, Tottori",
+    "population": 35908,
+    "location": [133.2314862, 35.5395916]
+  },
+  {
+    "name": "Uda, Nara",
+    "population": 35895,
+    "location": [135.9522692, 34.5280289]
+  },
+  {
+    "name": "Kamogawa, Chiba",
+    "population": 35792,
+    "location": [140.0987111, 35.1139867]
+  },
+  {
+    "name": "Kazuno, Akita",
+    "population": 35543,
+    "location": [140.7884361, 40.2157778]
+  },
+  {
+    "name": "Tōon, Ehime",
+    "population": 35517,
+    "location": [132.8722962, 33.7910237]
+  },
+  {
+    "name": "Yaita, Tochigi",
+    "population": 35462,
+    "location": [139.924054, 36.8066862]
+  },
+  {
+    "name": "Katagami, Akita",
+    "population": 35460,
+    "location": [139.9886344, 39.8832842]
+  },
+  {
+    "name": "Yanai, Yamaguchi",
+    "population": 35438,
+    "location": [132.1015969, 33.9638333]
+  },
+  {
+    "name": "Yufu, Ōita",
+    "population": 35298,
+    "location": [131.4268555, 33.1800131]
+  },
+  {
+    "name": "Katsuragi, Nara",
+    "population": 35194,
+    "location": [135.7069169, 34.5111186]
+  },
+  {
+    "name": "Zentsūji, Kagawa",
+    "population": 35180,
+    "location": [133.7871132, 34.2285327]
+  },
+  {
+    "name": "Kaminoyama, Yamagata",
+    "population": 35086,
+    "location": [140.2678268, 38.149562]
+  },
+  {
+    "name": "Kōshū, Yamanashi",
+    "population": 35072,
+    "location": [138.7294044, 35.7043159]
+  },
+  {
+    "name": "Niimi, Okayama",
+    "population": 35022,
+    "location": [133.4703064, 34.9770301]
+  },
+  {
+    "name": "Omaezaki, Shizuoka",
+    "population": 35015,
+    "location": [138.1281269, 34.6379866]
+  },
+  {
+    "name": "Higashikagawa, Kagawa",
+    "population": 34953,
+    "location": [134.3588204, 34.2438058]
+  },
+  {
+    "name": "Kahoku, Ishikawa",
+    "population": 34747,
+    "location": [136.7067268, 36.7198261]
+  },
+  {
+    "name": "Motosu, Gifu",
+    "population": 34729,
+    "location": [136.6787656, 35.4830469]
+  },
+  {
+    "name": "Komagane, Nagano",
+    "population": 34696,
+    "location": [137.9337821, 35.728814]
+  },
+  {
+    "name": "Hirakawa, Aomori",
+    "population": 34638,
+    "location": [140.5664783, 40.5840107]
+  },
+  {
+    "name": "Nan'yō, Yamagata",
+    "population": 34542,
+    "location": [140.1483749, 38.0551411]
+  },
+  {
+    "name": "Tsuru, Yamanashi",
+    "population": 34439,
+    "location": [138.9054727, 35.5516801]
+  },
+  {
+    "name": "Oga, Akita",
+    "population": 34194,
+    "location": [139.847558, 39.8868177]
+  },
+  {
+    "name": "Shibushi, Kagoshima",
+    "population": 34105,
+    "location": [131.045336, 31.495442]
+  },
+  {
+    "name": "Asago, Hyōgo",
+    "population": 34084,
+    "location": [134.8531501, 35.3396654]
+  },
+  {
+    "name": "Kōnan, Kōchi",
+    "population": 34084,
+    "location": [133.7004882, 33.5641705]
+  },
+  {
+    "name": "Namerikawa, Toyama",
+    "population": 33789,
+    "location": [137.3411906, 36.7643778]
+  },
+  {
+    "name": "Nirasaki, Yamanashi",
+    "population": 33539,
+    "location": [138.4461267, 35.708897]
+  },
+  {
+    "name": "Mima, Tokushima",
+    "population": 33520,
+    "location": [134.1697495, 34.0534034]
+  },
+  {
+    "name": "Kunisaki, Ōita",
+    "population": 33473,
+    "location": [131.7316737, 33.5653133]
+  },
+  {
+    "name": "Kitsuki, Ōita",
+    "population": 33465,
+    "location": [131.6160889, 33.417026]
+  },
+  {
+    "name": "Kanzaki, Saga",
+    "population": 33449,
+    "location": [130.3730603, 33.3107627]
+  },
+  {
+    "name": "Saito, Miyazaki",
+    "population": 33290,
+    "location": [131.4012025, 32.1085538]
+  },
+  {
+    "name": "Saikai, Nagasaki",
+    "population": 32737,
+    "location": [129.642977, 32.9330669]
+  },
+  {
+    "name": "Oyabe, Toyama",
+    "population": 32656,
+    "location": [136.8686222, 36.6755751]
+  },
+  {
+    "name": "Shingū, Wakayama",
+    "population": 32654,
+    "location": [135.9925301, 33.724202]
+  },
+  {
+    "name": "Kakuda, Miyagi",
+    "population": 32559,
+    "location": [140.7819901, 37.9770628]
+  },
+  {
+    "name": "Miyoshi, Tokushima",
+    "population": 32329,
+    "location": [133.8072634, 34.0260411]
+  },
+  {
+    "name": "Akitakata, Hiroshima",
+    "population": 32323,
+    "location": [132.7042987, 34.66630749999999]
+  },
+  {
+    "name": "Ukiha, Fukuoka",
+    "population": 32277,
+    "location": [130.7549338, 33.347297]
+  },
+  {
+    "name": "Tainai, Niigata",
+    "population": 32165,
+    "location": [139.4103418, 38.0597108]
+  },
+  {
+    "name": "Ichikikushikino, Kagoshima",
+    "population": 32079,
+    "location": [130.2719288, 31.7145528]
+  },
+  {
+    "name": "Takahagi, Ibaraki",
+    "population": 32031,
+    "location": [140.7166877, 36.719147]
+  },
+  {
+    "name": "Aioi, Hyōgo",
+    "population": 31973,
+    "location": [134.4680664, 34.8036006]
+  },
+  {
+    "name": "Chūō, Yamanashi",
+    "population": 31875,
+    "location": [138.5172718, 35.5996289]
+  },
+  {
+    "name": "Motomiya, Fukushima",
+    "population": 31737,
+    "location": [140.3938904, 37.5131313]
+  },
+  {
+    "name": "Mimasaka, Okayama",
+    "population": 31550,
+    "location": [134.1485722, 35.0085882]
+  },
+  {
+    "name": "Wajima, Ishikawa",
+    "population": 31532,
+    "location": [136.8991957, 37.3905901]
+  },
+  {
+    "name": "Obama, Fukui",
+    "population": 31486,
+    "location": [135.7466439, 35.4955931]
+  },
+  {
+    "name": "Kashima, Saga",
+    "population": 31326,
+    "location": [130.098769, 33.1037238]
+  },
+  {
+    "name": "Ōmachi, Nagano",
+    "population": 31276,
+    "location": [137.8510941, 36.5030179]
+  },
+  {
+    "name": "Tōmi, Nagano",
+    "population": 31211,
+    "location": [138.3302472, 36.3594773]
+  },
+  {
+    "name": "Arida, Wakayama",
+    "population": 31194,
+    "location": [135.127635, 34.0830954]
+  },
+  {
+    "name": "Gose, Nara",
+    "population": 31160,
+    "location": [135.7402402, 34.4633305]
+  },
+  {
+    "name": "Itako, Ibaraki",
+    "population": 31103,
+    "location": [140.5553722, 35.9471227]
+  },
+  {
+    "name": "Kamiamakusa, Kumamoto",
+    "population": 31051,
+    "location": [130.4305268, 32.5874193]
+  },
+  {
+    "name": "Semboku, Akita",
+    "population": 30885,
+    "location": [140.7305881, 39.7000694]
+  },
+  {
+    "name": "Kamo, Niigata",
+    "population": 30800,
+    "location": [139.0401981, 37.6662746]
+  },
+  {
+    "name": "Miyawaka, Fukuoka",
+    "population": 30793,
+    "location": [130.6666936, 33.7235676]
+  },
+  {
+    "name": "Awara, Fukui",
+    "population": 30765,
+    "location": [136.2290254, 36.2113529]
+  },
+  {
+    "name": "Ninohe, Iwate",
+    "population": 30685,
+    "location": [141.3048166, 40.2712133]
+  },
+  {
+    "name": "Tōno, Iwate",
+    "population": 30587,
+    "location": [141.5333031, 39.3278378]
+  },
+  {
+    "name": "Nasukarasuyama, Tochigi",
+    "population": 30433,
+    "location": [140.1514256, 36.6568934]
+  },
+  {
+    "name": "Iki, Nagasaki",
+    "population": 30352,
+    "location": [129.6913518, 33.7499501]
+  },
+  {
+    "name": "Nagai, Yamagata",
+    "population": 30285,
+    "location": [140.0405238, 38.1074936]
+  },
+  {
+    "name": "Murakami, Niigata",
+    "population": 30197,
+    "location": [139.4800209, 38.22397900000001]
+  },
+  {
+    "name": "Hachimantai, Iwate",
+    "population": 29993,
+    "location": [141.0953354, 39.9263614]
+  },
+  {
+    "name": "Nayoro, Hokkaidō",
+    "population": 29869,
+    "location": [142.4631673, 44.35593799999999]
+  },
+  {
+    "name": "Ōtsuki, Yamanashi",
+    "population": 29869,
+    "location": [138.9400276, 35.6104852]
+  },
+  {
+    "name": "Yamagata, Gifu",
+    "population": 29857,
+    "location": [136.7813716, 35.5061094]
+  },
+  {
+    "name": "Takehara, Hiroshima",
+    "population": 29803,
+    "location": [132.9070883, 34.3417943]
+  },
+  {
+    "name": "Tosa, Kōchi",
+    "population": 29726,
+    "location": [133.4252918, 33.4960442]
+  },
+  {
+    "name": "Ōtake, Hiroshima",
+    "population": 29665,
+    "location": [132.2224752, 34.2379773]
+  },
+  {
+    "name": "Ureshino, Saga",
+    "population": 29644,
+    "location": [130.0601144, 33.1280839]
+  },
+  {
+    "name": "Aso, Kumamoto",
+    "population": 29149,
+    "location": [131.1209554, 32.9519535]
+  },
+  {
+    "name": "Kami, Kōchi",
+    "population": 29144,
+    "location": [133.6860033, 33.6037185]
+  },
+  {
+    "name": "Nemuro, Hokkaidō",
+    "population": 28923,
+    "location": [145.5827903, 43.3300759]
+  },
+  {
+    "name": "Etajima, Hiroshima",
+    "population": 28601,
+    "location": [132.4438548, 34.2230022]
+  },
+  {
+    "name": "Nikaho, Akita",
+    "population": 28422,
+    "location": [139.9077127, 39.2030116]
+  },
+  {
+    "name": "Uenohara, Yamanashi",
+    "population": 28295,
+    "location": [139.1085986, 35.6302591]
+  },
+  {
+    "name": "Minamata, Kumamoto",
+    "population": 28123,
+    "location": [130.4087225, 32.21188]
+  },
+  {
+    "name": "Hida, Gifu",
+    "population": 28112,
+    "location": [137.186317, 36.2381244]
+  },
+  {
+    "name": "Murayama, Yamagata",
+    "population": 27586,
+    "location": [140.3803719, 38.4833438]
+  },
+  {
+    "name": "Buzen, Fukuoka",
+    "population": 27578,
+    "location": [131.130051, 33.6115108]
+  },
+  {
+    "name": "Yabu, Hyōgo",
+    "population": 27428,
+    "location": [134.767671, 35.4046571]
+  },
+  {
+    "name": "Gōtsu, Shimane",
+    "population": 26958,
+    "location": [132.2209303, 35.0114175]
+  },
+  {
+    "name": "Gobō, Wakayama",
+    "population": 26335,
+    "location": [135.1523464, 33.8914924]
+  },
+  {
+    "name": "Katsuyama, Fukui",
+    "population": 26333,
+    "location": [136.5005841, 36.060945]
+  },
+  {
+    "name": "Matsuura, Nagasaki",
+    "population": 26007,
+    "location": [129.7090447, 33.3410206]
+  },
+  {
+    "name": "Shimoda, Shizuoka",
+    "population": 25784,
+    "location": [138.945316, 34.6795334]
+  },
+  {
+    "name": "Susaki, Kōchi",
+    "population": 25679,
+    "location": [133.282953, 33.400745]
+  },
+  {
+    "name": "Taketa, Ōita",
+    "population": 25449,
+    "location": [131.3977939, 32.9737032]
+  },
+  {
+    "name": "Bibai, Hokkaidō",
+    "population": 25312,
+    "location": [141.8537848, 43.3328813]
+  },
+  {
+    "name": "Bungotakada, Ōita",
+    "population": 24484,
+    "location": [131.4446239, 33.5572294]
+  },
+  {
+    "name": "Makurazaki, Kagoshima",
+    "population": 24400,
+    "location": [130.2969045, 31.2729002]
+  },
+  {
+    "name": "Monbetsu, Hokkaidō",
+    "population": 24293,
+    "location": [143.3545032, 44.3564842]
+  },
+  {
+    "name": "Akune, Kagoshima",
+    "population": 24166,
+    "location": [130.1927734, 32.0144696]
+  },
+  {
+    "name": "Iiyama, Nagano",
+    "population": 24155,
+    "location": [138.3654952, 36.8517445]
+  },
+  {
+    "name": "Rumoi, Hokkaidō",
+    "population": 24036,
+    "location": [141.6370119, 43.9409868]
+  },
+  {
+    "name": "Hakui, Ishikawa",
+    "population": 23963,
+    "location": [136.7789962, 36.8935987]
+  },
+  {
+    "name": "Rikuzentakata, Iwate",
+    "population": 23961,
+    "location": [141.6254946, 39.0276607]
+  },
+  {
+    "name": "Furano, Hokkaidō",
+    "population": 23890,
+    "location": [142.3832254, 43.3421398]
+  },
+  {
+    "name": "Sukumo, Kōchi",
+    "population": 23771,
+    "location": [132.7262855, 32.9390085]
+  },
+  {
+    "name": "Fukagawa, Hokkaidō",
+    "population": 23215,
+    "location": [142.053538, 43.7232603]
+  },
+  {
+    "name": "Mino, Gifu",
+    "population": 22912,
+    "location": [136.9075396, 35.5447697]
+  },
+  {
+    "name": "Ebino, Miyazaki",
+    "population": 22445,
+    "location": [130.8107962, 32.0453441]
+  },
+  {
+    "name": "Toba, Mie",
+    "population": 22286,
+    "location": [136.8433615, 34.481435]
+  },
+  {
+    "name": "Taku, Saga",
+    "population": 22165,
+    "location": [130.1100606, 33.28851]
+  },
+  {
+    "name": "Shibetsu, Hokkaidō",
+    "population": 21640,
+    "location": [142.4004035, 44.1787338]
+  },
+  {
+    "name": "Katsuura, Chiba",
+    "population": 21413,
+    "location": [140.3209324, 35.152283]
+  },
+  {
+    "name": "Kushima, Miyazaki",
+    "population": 21386,
+    "location": [131.2283032, 31.4645389]
+  },
+  {
+    "name": "Owase, Mie",
+    "population": 21272,
+    "location": [136.1909953, 34.0707989]
+  },
+  {
+    "name": "Miyazu, Kyoto",
+    "population": 20565,
+    "location": [135.1955665, 35.5355767]
+  },
+  {
+    "name": "Tsukumi, Ōita",
+    "population": 20561,
+    "location": [131.8612771, 33.0721832]
+  },
+  {
+    "name": "Aki, Kōchi",
+    "population": 20555,
+    "location": [133.9071661, 33.5025463]
+  },
+  {
+    "name": "Kumano, Mie",
+    "population": 20477,
+    "location": [136.1002367, 33.8886037]
+  },
+  {
+    "name": "Obanazawa, Yamagata",
+    "population": 19937,
+    "location": [140.405691, 38.6006216]
+  },
+  {
+    "name": "Sunagawa, Hokkaidō",
+    "population": 18740,
+    "location": [141.903465, 43.49484289999999]
+  },
+  {
+    "name": "Tarumizu, Kagoshima",
+    "population": 18078,
+    "location": [130.7009143, 31.4927344]
+  },
+  {
+    "name": "Muroto, Kōchi",
+    "population": 17683,
+    "location": [134.1520509, 33.2900093]
+  },
+  {
+    "name": "Nishinoomote, Kagoshima",
+    "population": 17666,
+    "location": [130.9968353, 30.7324118]
+  },
+  {
+    "name": "Tosashimizu, Kōchi",
+    "population": 17421,
+    "location": [132.9549889, 32.7816335]
+  },
+  {
+    "name": "Mine, Yamaguchi",
+    "population": 17355,
+    "location": [131.2056781, 34.1666354]
+  },
+  {
+    "name": "Suzu, Ishikawa",
+    "population": 17111,
+    "location": [137.2604364, 37.4363473]
+  },
+  {
+    "name": "Ashibetsu, Hokkaidō",
+    "population": 16465,
+    "location": [142.1894364, 43.51816609999999]
+  },
+  {
+    "name": "Akabira, Hokkaidō",
+    "population": 12234,
+    "location": [142.044211, 43.558074]
+  },
+  {
+    "name": "Yūbari, Hokkaidō",
+    "population": 10471,
+    "location": [141.9738961, 43.0567343]
+  },
+  {
+    "name": "Mikasa, Hokkaidō",
+    "population": 10070,
+    "location": [141.8753272, 43.24543509999999]
+  },
+  {
+    "name": "Utashinai, Hokkaidō",
+    "population": 4259,
+    "location": [142.0345679, 43.5213525]
+  }
+]

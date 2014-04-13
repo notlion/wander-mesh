@@ -7,7 +7,14 @@ var module = angular.module('tracks.goog', [
   'tracks.data'
 ]);
 
-module.directive('tracksMap', ['places', 'geocode', '$q', function(places, geocode, $q) {
+function arrayToLatLng(arr) {
+  return new google.maps.LatLng(arr[1], arr[0]);
+}
+function latLngToArray(latLng) {
+  return [ latLng.lng(), latLng.lat() ];
+}
+
+module.directive('tracksMap', function(places, markers, geocode, $q) {
   return {
     controller: 'TracksMapController',
     link: function($scope, element, attrs, controller) {
@@ -24,42 +31,41 @@ module.directive('tracksMap', ['places', 'geocode', '$q', function(places, geoco
         keyboardShortcuts: true
       });
 
-      $scope.markers = [];
-
-      function safeApply() {
-        if (!$scope.$$phase) $scope.$apply();
-      }
-
       function onMarkerDragEnd() {
-        removeMarker(this);
-        safeApply();
-        addMarker(this.getPosition());
-        safeApply();
+        this.location = latLngToArray(this.gmMarker.getPosition());
+        markers.remove(this);
+        markers.add(this);
+        $scope.$digest();
       }
 
-      function addMarker(latLng) {
-        var marker = new gm.Marker({
+      function onMarkerRightClick() {
+        markers.remove(this);
+        $scope.$digest();
+      }
+
+      $scope.$on('markerAdded', function addMarker(event, marker) {
+        marker.gmMarker = new gm.Marker({
           map: map,
-          position: latLng,
+          position: arrayToLatLng(marker.location),
           draggable: true
         });
-        gm.event.addListener(marker, 'dragend', onMarkerDragEnd.bind(marker));
-        $scope.markers.push(marker);
-        return marker;
-      }
+        gm.event.addListener(marker.gmMarker, 'dragend',
+            onMarkerDragEnd.bind(marker));
+        gm.event.addListener(marker.gmMarker, 'rightclick',
+            onMarkerRightClick.bind(marker));
+      });
 
-      function removeMarker(marker) {
-        gm.event.clearInstanceListeners(marker);
-        marker.setMap(null);
-        var i = $scope.markers.indexOf(marker);
-        if (i >= 0) {
-          $scope.markers.splice(i, 1);
-        }
-      }
+      $scope.$on('markerRemoved', function removeMarker(event, marker) {
+        gm.event.clearInstanceListeners(marker.gmMarker);
+        marker.gmMarker.setMap(null);
+        delete marker.gmMarker;
+      });
 
       gm.event.addListener(map, 'click', function(event) {
-        addMarker(event.latLng);
-        safeApply();
+        markers.add({
+          location: [ event.latLng.lng(), event.latLng.lat() ]
+        });
+        $scope.$digest();
       });
 
       var linesByEdgeId = {};
@@ -102,77 +108,51 @@ module.directive('tracksMap', ['places', 'geocode', '$q', function(places, geoco
           );
         });
       });
-
-      // HACK Just cram in some data..
-      places.forEach(function(place) {
-        addMarker(new gm.LatLng(place.location[1], place.location[0]))
-          .setTitle(JSON.stringify(place));
-      });
-      // var processedPlaces = [];
-      // $q.all(_.first(places, 300).map(function(place) {
-      //   return geocode.request(place.name).then(function(result) {
-      //     place.location = [
-      //       result[0].geometry.location.lng(),
-      //       result[0].geometry.location.lat()
-      //     ];
-      //     processedPlaces.push(place);
-      //   });
-      // })).then(function() {
-      //   console.log(JSON.stringify(processedPlaces));
-      // });
     }
   };
-}]);
+});
 
-module.controller('TracksMapController', [
-  '$rootScope',
-  '$scope',
-  'project',
-  'edgeMgr',
-  function($rootScope, $scope, project, edgeMgr) {
-    function getMarkerNodes(markers) {
-      if (markers.length < 1) return [];
-      return markers.map(function(marker) {
-        var node = marker.getPosition();
-        node.id = nextNodeId++;
-        return node;
-      });
-    }
-
-    var nextNodeId = 0;
-    var nextEdgeId = 0;
-
-    function getDelaunayEdges(nodes) {
-      if (nodes.length < 1) return [];
-      var edges = d3.geom.voronoi()
-        .x(function(d, i) { return d.projected[0]; })
-        .y(function(d, i) { return d.projected[1]; })
-        .links(nodes);
-      // Give each edge an incrementing ID for lookup in maps.
-      edges.forEach(function(edge) {
-        edge.id = nextEdgeId++;
-      });
-      return edges;
-    }
-
-    function appendProjectedToNodes(nodes) {
-      nodes.forEach(function(node) {
-        node.projected = project.latLng(node);
-      });
-    }
-
-    $scope.$watch(function genId() {
-      return $scope.markers.reduce(function(p, c) {
-        return p + c.getPosition().toUrlValue();
-      }, '');
-    }, function() {
-      $rootScope.nodes = getMarkerNodes($scope.markers);
-      appendProjectedToNodes($rootScope.nodes);
-      $rootScope.edges = getDelaunayEdges($rootScope.nodes);
-      $rootScope.transition = edgeMgr.replaceAll($rootScope.edges);
+module.controller('TracksMapController',
+    function($rootScope, $scope, project, markers, edgeMgr) {
+  function getMarkerNodes(markers) {
+    if (markers.length < 1) return [];
+    return markers.map(function(marker) {
+      var node = arrayToLatLng(marker.location);
+      node.id = nextNodeId++;
+      return node;
     });
   }
-]);
+
+  var nextNodeId = 0;
+  var nextEdgeId = 0;
+
+  function getDelaunayEdges(nodes) {
+    if (nodes.length < 1) return [];
+    var edges = d3.geom.voronoi()
+      .x(function(d, i) { return d.projected[0]; })
+      .y(function(d, i) { return d.projected[1]; })
+      .links(nodes);
+    // Give each edge an incrementing ID for lookup in maps.
+    edges.forEach(function(edge) {
+      edge.id = nextEdgeId++;
+    });
+    return edges;
+  }
+
+  function appendProjectedToNodes(nodes) {
+    nodes.forEach(function(node) {
+      node.projected = project.latLng(node);
+    });
+  }
+
+  $scope.markers = markers;
+  $scope.$watchCollection('markers', function() {
+    $rootScope.nodes = getMarkerNodes(markers);
+    appendProjectedToNodes($rootScope.nodes);
+    $rootScope.edges = getDelaunayEdges($rootScope.nodes);
+    $rootScope.transition = edgeMgr.replaceAll($rootScope.edges);
+  });
+});
 
 module.factory('edgeMgr', [
   '$q',
@@ -220,60 +200,53 @@ module.factory('edgeMgr', [
   }
 ]);
 
-module.factory('directionsMgr', [
-  '$q',
-  'GoogleRequester',
-  function($q, GoogleRequester) {
-    var gm = google.maps;
-    var ds = new gm.DirectionsService();
-    var directionsMgr = {};
+module.factory('directionsMgr', function($q, GoogleRequester) {
+  var gm = google.maps;
+  var ds = new gm.DirectionsService();
+  var directionsMgr = {};
 
-    var requester = new GoogleRequester(function(opts, callback) {
-      ds.route({
-        origin: opts.source,
-        destination: opts.target,
-        travelMode: gm.TravelMode.DRIVING
-      }, callback);
+  var requester = new GoogleRequester(function(opts, callback) {
+    ds.route({
+      origin: opts.source,
+      destination: opts.target,
+      travelMode: gm.TravelMode.DRIVING
+    }, callback);
+  });
+
+  directionsMgr.requestEdgeRoute = function(edge) {
+    var deferred = $q.defer();
+    requester.request(edge).then(function(result) {
+      deferred.resolve(result.routes[0]);
+    }, deferred.reject);
+    return deferred.promise;
+  };
+
+  directionsMgr.cancelRequestEdgeRoute = function(edge, silent) {
+    return requester.cancel(edge, silent, function(value) {
+      return equalsEdge(value.opts, edge);
     });
+  };
 
-    directionsMgr.requestEdgeRoute = function(edge) {
-      var deferred = $q.defer();
-      requester.request(edge).then(function(result) {
-        deferred.resolve(result.routes[0]);
-      }, deferred.reject);
-      return deferred.promise;
-    };
+  return directionsMgr;
+});
 
-    directionsMgr.cancelRequestEdgeRoute = function(edge, silent) {
-      return requester.cancel(edge, silent, function(value) {
-        return equalsEdge(value.opts, edge);
-      });
-    };
+module.factory('geocode', function(GoogleRequester) {
+  var gm = google.maps;
+  var geocoder = new gm.Geocoder();
+  var geocode = {};
 
-    return directionsMgr;
-  }
-]);
+  var requester = new GoogleRequester(function(opts, callback) {
+    geocoder.geocode(opts, callback);
+  });
 
-module.factory('geocode', [
-  'GoogleRequester',
-  function(GoogleRequester) {
-    var gm = google.maps;
-    var geocoder = new gm.Geocoder();
-    var geocode = {};
-
-    var requester = new GoogleRequester(function(opts, callback) {
-      geocoder.geocode(opts, callback);
+  geocode.request = function(address) {
+    return requester.request({
+      address: address
     });
+  };
 
-    geocode.request = function(address) {
-      return requester.request({
-        address: address
-      });
-    };
-
-    return geocode;
-  }
-]);
+  return geocode;
+});
 
 module.factory('GoogleRequester', [
   '$q',

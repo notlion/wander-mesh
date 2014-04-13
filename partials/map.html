@@ -1,8 +1,14 @@
-<div on-global-tab="nextMode()">
+<div id="map" on-global-tab="nextMode()">
   <div tracks-map class="map" ng-class="{ active: isMode('map') }">
   </div>
   <div tracks-render class="map" ng-class="{ active: isMode('render') }">
   </div>
-  <div class="controls">
-  </div>
+</div>
+<div id="controls">
+  <button id="render-toggle" ng-switch on="mode" ng-click="nextMode()">
+    <span ng-switch-when="map">Show Render</span>
+    <span ng-switch-when="render">Show Map</span>
+  </button>
+  <select ng-model="placeName" ng-options="place for place in places"></select>
+  <button ng-click="loadPlaces()">Load</button>
 </div>
