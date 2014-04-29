@@ -2,7 +2,7 @@
 
 'use strict';
 
-var data = angular.module('tracks.data', [])
+var data = angular.module('tracks.data', []);
 
 data.factory('places', function($http, $q) {
   var places = {};

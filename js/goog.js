@@ -14,8 +14,11 @@ function latLngToArray(latLng) {
   return [ latLng.lng(), latLng.lat() ];
 }
 
-module.directive('tracksMap', function(places, markers, geocode, $q) {
+module.directive('tracksMap', function($rootScope, places, markers, geocode) {
   return {
+    scope: {
+      showRoutes: '&'
+    },
     controller: 'TracksMapController',
     link: function($scope, element, attrs, controller) {
       element.addClass('goog-map');
@@ -71,8 +74,13 @@ module.directive('tracksMap', function(places, markers, geocode, $q) {
       var linesByEdgeId = {};
       var routesByEdgeId = {};
 
-      $scope.$watch('transition', function() {
-        var transition = $scope.transition;
+      $scope.$watch('showRoutes()', function(showRoutes) {
+        for (var id in routesByEdgeId) {
+          routesByEdgeId[id].setMap(showRoutes ? map : null);
+        }
+      });
+
+      $rootScope.$on('transition', function(event, transition) {
         transition.exiting.forEach(function(edge) {
           if (linesByEdgeId[edge.id]) {
             linesByEdgeId[edge.id].setMap(null);
@@ -91,21 +99,21 @@ module.directive('tracksMap', function(places, markers, geocode, $q) {
             path: [ edge.source, edge.target ],
             strokeOpacity: 0.25
           });
-          edge.routePromise.then(
-            function(route) {
-              routesByEdgeId[edge.id] = new gm.Polyline({
-                map: map,
-                clickable: false,
-                path: route.overview_path,
-                strokeColor: '#c300ff',
-                strokeWeight: 5,
-                strokeOpacity: 1
-              });
-            },
-            function(error) {
-              console.error(error);
+          edge.routePromise.then(function(route) {
+            var line = routesByEdgeId[edge.id] = new gm.Polyline({
+              clickable: false,
+              path: route.overview_path,
+              strokeColor: '#c300ff',
+              strokeWeight: 4,
+              strokeOpacity: 1
+            });
+            if ($scope.showRoutes()) {
+              line.setMap(map);
             }
-          );
+          },
+          function(error) {
+            console.error(error);
+          });
         });
       });
     }
@@ -147,58 +155,54 @@ module.controller('TracksMapController',
 
   $scope.markers = markers;
   $scope.$watchCollection('markers', function() {
-    $rootScope.nodes = getMarkerNodes(markers);
-    appendProjectedToNodes($rootScope.nodes);
-    $rootScope.edges = getDelaunayEdges($rootScope.nodes);
-    $rootScope.transition = edgeMgr.replaceAll($rootScope.edges);
+    var nodes = getMarkerNodes(markers);
+    appendProjectedToNodes(nodes);
+    var edges = getDelaunayEdges(nodes);
+    $rootScope.$emit('transition', edgeMgr.replaceAll(edges));
   });
 });
 
-module.factory('edgeMgr', [
-  '$q',
-  'directionsMgr',
-  function($q, directionsMgr) {
-    var edgeMgr = {};
-    var edges = [];
+module.factory('edgeMgr', function($q, directionsMgr) {
+  var edgeMgr = {};
+  var edges = [];
 
-    function addEdge(edge) {
-      edge.routePromise = directionsMgr.requestEdgeRoute(edge);
-      edges.push(edge);
-    }
-
-    function removeEdge(edge) {
-      directionsMgr.cancelRequestEdgeRoute(edge);
-      var i = edgeIndexOf(edges, edge);
-      if (i >= 0) edges.splice(i, 1);
-    }
-
-    edgeMgr.replaceAll = function(nextEdges) {
-      var transition = {
-        entering: _.filter(nextEdges, function(edge) {
-          return edgeIndexOf(edges, edge) === -1;
-        }),
-        exiting:  _.filter(edges, function(edge) {
-          return edgeIndexOf(nextEdges, edge) === -1;
-        })
-      };
-      transition.entering.forEach(addEdge);
-      transition.exiting.forEach(removeEdge);
-      return transition;
-    };
-
-    edgeMgr.getEdges = function() {
-      return edges;
-    };
-
-    edgeMgr.indexOf = function(edges, edge) {
-      return indexOf(edges, function(otherEdge) {
-        return equalsEdge(edge, otherEdge);
-      });
-    };
-
-    return edgeMgr;
+  function addEdge(edge) {
+    edge.routePromise = directionsMgr.requestEdgeRoute(edge);
+    edges.push(edge);
   }
-]);
+
+  function removeEdge(edge) {
+    directionsMgr.cancelRequestEdgeRoute(edge);
+    var i = edgeIndexOf(edges, edge);
+    if (i >= 0) edges.splice(i, 1);
+  }
+
+  edgeMgr.replaceAll = function(nextEdges) {
+    var transition = {
+      entering: _.filter(nextEdges, function(edge) {
+        return edgeIndexOf(edges, edge) === -1;
+      }),
+      exiting:  _.filter(edges, function(edge) {
+        return edgeIndexOf(nextEdges, edge) === -1;
+      })
+    };
+    transition.entering.forEach(addEdge);
+    transition.exiting.forEach(removeEdge);
+    return transition;
+  };
+
+  edgeMgr.getEdges = function() {
+    return edges;
+  };
+
+  edgeMgr.indexOf = function(edges, edge) {
+    return indexOf(edges, function(otherEdge) {
+      return equalsEdge(edge, otherEdge);
+    });
+  };
+
+  return edgeMgr;
+});
 
 module.factory('directionsMgr', function($q, GoogleRequester) {
   var gm = google.maps;
@@ -248,80 +252,76 @@ module.factory('geocode', function(GoogleRequester) {
   return geocode;
 });
 
-module.factory('GoogleRequester', [
-  '$q',
-  '$rootScope',
-  function($q, $rootScope) {
-    return function GoogleRequester(requestFn) {
-      var queuedRequests = [];
-      var pendingRequests = [];
+module.factory('GoogleRequester', function($q, $rootScope) {
+  return function GoogleRequester(requestFn) {
+    var queuedRequests = [];
+    var pendingRequests = [];
 
-      var tickInterval = 100;
-      var tickTimeout = null;
+    var tickInterval = 100;
+    var tickTimeout = null;
 
-      function tick() {
-        if (queuedRequests.length > 0) {
-          var request = queuedRequests.shift();
-          pendingRequests.push(request);
+    function tick() {
+      if (queuedRequests.length > 0) {
+        var request = queuedRequests.shift();
+        pendingRequests.push(request);
 
-          requestFn(request.opts, function(result, status) {
-            if (cancel(request.opts, true)) {
-              if (status === 'OK') {
-                request.resolve(result);
-                // Get confident and decrease the timeout by a little.
-                tickInterval = Math.floor(tickInterval * 0.95);
-                // We need to digest since we are outside angular's scope.
-                $rootScope.$digest();
-              }
-              else if(status === 'OVER_QUERY_LIMIT') {
-                // Eek! Google rate limited us. Better wait a little longer.
-                tickInterval *= 2;
-                queuedRequests.push(request); // Retry
-              }
-              else {
-                request.reject(status);
-              }
+        requestFn(request.opts, function(result, status) {
+          if (cancel(request.opts, true)) {
+            if (status === 'OK') {
+              request.resolve(result);
+              // Get confident and decrease the timeout by a little.
+              tickInterval = Math.floor(tickInterval * 0.95);
+              // We need to digest since we are outside angular's scope.
+              $rootScope.$digest();
             }
-          });
+            else if(status === 'OVER_QUERY_LIMIT') {
+              // Eek! Google rate limited us. Better wait a little longer.
+              tickInterval *= 2;
+              queuedRequests.push(request); // Retry
+            }
+            else {
+              request.reject(status);
+            }
+          }
+        });
 
-          tickTimeout = queuedRequests.length > 0 ?
-            setTimeout(tick, tickInterval) : null;
-        }
+        tickTimeout = queuedRequests.length > 0 ?
+          setTimeout(tick, tickInterval) : null;
       }
+    }
 
-      function pump() {
-        if (tickTimeout === null) tickTimeout = setTimeout(tick, 0);
-      }
+    function pump() {
+      if (tickTimeout === null) tickTimeout = setTimeout(tick, 0);
+    }
 
-      this.request = function(opts) {
-        var deferred = $q.defer();
-        deferred.opts = opts;
-        queuedRequests.push(deferred);
-        pump();
-        return deferred.promise;
-      };
-
-      var cancel = this.cancel = function(opts, silent, equals) {
-        if (equals === undefined) {
-          equals = function(value){ return value.opts === opts; };
-        }
-        var i = indexOf(queuedRequests, equals);
-        if (i >= 0) {
-          if (!silent) queuedRequests[i].reject('Cancelled');
-          queuedRequests.splice(i, 1);
-          return true;
-        }
-        i = indexOf(pendingRequests, equals);
-        if (i >= 0) {
-          if (!silent) pendingRequests[i].reject('Cancelled');
-          pendingRequests.splice(i, 1);
-          return true;
-        }
-        return false;
-      };
+    this.request = function(opts) {
+      var deferred = $q.defer();
+      deferred.opts = opts;
+      queuedRequests.push(deferred);
+      pump();
+      return deferred.promise;
     };
-  }
-]);
+
+    var cancel = this.cancel = function(opts, silent, equals) {
+      if (equals === undefined) {
+        equals = function(value){ return value.opts === opts; };
+      }
+      var i = indexOf(queuedRequests, equals);
+      if (i >= 0) {
+        if (!silent) queuedRequests[i].reject('Cancelled');
+        queuedRequests.splice(i, 1);
+        return true;
+      }
+      i = indexOf(pendingRequests, equals);
+      if (i >= 0) {
+        if (!silent) pendingRequests[i].reject('Cancelled');
+        pendingRequests.splice(i, 1);
+        return true;
+      }
+      return false;
+    };
+  };
+});
 
 function equalsEdge(e1, e2) {
   return e1.source && e2.source && e1.source.equals(e2.source) &&

@@ -7,7 +7,7 @@ var module = angular.module('tracks.map', [
   'tracks.goog'
 ]);
 
-module.directive('onGlobalTab', ['$window', '$parse', function($window, $parse) {
+module.directive('onGlobalTab', function($window, $parse) {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
@@ -20,7 +20,7 @@ module.directive('onGlobalTab', ['$window', '$parse', function($window, $parse) 
       });
     }
   };
-}]);
+});
 
 module.controller('MapController', function($scope, places, markers) {
   var modes = [ 'map', 'render' ];
@@ -38,6 +38,7 @@ module.controller('MapController', function($scope, places, markers) {
   $scope.places = places.list();
   $scope.placeName = $scope.places[0];
   $scope.mergeArcDistance = 0.01;
+  $scope.showRoutes = true;
 
   $scope.loadPlaces = function() {
     places.get($scope.placeName).then(function(data) {
