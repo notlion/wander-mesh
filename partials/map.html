@@ -4,11 +4,19 @@
   <div tracks-render class="map" ng-class="{ active: isMode('render') }">
   </div>
 </div>
-<div id="controls">
-  <button id="render-toggle" ng-switch on="mode" ng-click="nextMode()">
-    <span ng-switch-when="map">Show Render</span>
-    <span ng-switch-when="render">Show Map</span>
-  </button>
-  <select ng-model="placeName" ng-options="place for place in places"></select>
-  <button ng-click="loadPlaces()">Load</button>
-</div>
+<ol id="controls">
+  <li>
+    <button id="render-toggle" ng-switch on="mode" ng-click="nextMode()">
+      <span ng-switch-when="map">Show Render</span>
+      <span ng-switch-when="render">Show Map</span>
+    </button>
+  </li>
+  <li>
+    <select ng-model="placeName" ng-options="place for place in places"></select>
+    <button ng-click="loadPlaces()">Load</button>
+  </li>
+  <li>
+    <label for="show-routes">Show Routes</label>
+    <input id="show-routes" type="checkbox" ng-model="showRoutes">
+  </li>
+</ol>
