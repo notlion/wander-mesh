@@ -49,6 +49,22 @@ module.controller('MapController', function($scope, places, markers) {
         });
     });
   };
+
+  // Bit of a dirty hack to download the SVG, but it works alright.
+  $scope.exportSvg = function() {
+    var html = d3.select('svg')
+      .attr('version', 1.1)
+      .attr('xmlns', 'http://www.w3.org/2000/svg')
+      .node().parentNode.innerHTML.trim();
+
+    var a = d3.select('body').append('a')
+      .attr('href-lang', 'image/svg+xml')
+      .attr('download', 'routes.svg')
+      .attr('href', 'data:application/octet-stream;base64,\n' + btoa(html));
+
+    a.node().click();
+    a.remove();
+  };
 });
 
 }());
